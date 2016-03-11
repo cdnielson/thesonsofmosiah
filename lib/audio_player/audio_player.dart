@@ -29,7 +29,7 @@ class AudioPlayer {
   AudioElement myPlayer;
   DivElement myTimeline;
   String currentSongPath = "";
-
+  bool playPause = false;
 
   AudioPlayer() {
     print("go");
@@ -94,6 +94,7 @@ class AudioPlayer {
   }
 
   void play() {
+    playPause = !playPause;
     player.nativeElement.play();
     playing = true;
 //    timeUpdate();
