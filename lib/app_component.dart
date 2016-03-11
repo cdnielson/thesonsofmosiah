@@ -2,7 +2,7 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular2/angular2.dart';
-import 'package:audioplayer/audio_player.dart';
+import 'audio_player/audio_player.dart';
 
 @Component(
     selector: 'my-app',
