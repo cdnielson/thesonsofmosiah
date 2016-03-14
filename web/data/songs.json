@@ -3,7 +3,10 @@
   "songs" :
   [
     {
-
+      "name": "Back in Black",
+      "url": "back_in_black.ogg"
+    },
+    {
       "name": "Cursed/The Sons of Mosiah",
       "url": "cursed.mp3"
     },

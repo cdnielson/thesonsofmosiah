@@ -1,27 +1,39 @@
 <style>
-.highlight {
-background: lightyellow;
-}
+    .highlight {
+        background: lightyellow;
+    }
 
-.pointer {
-cursor: pointer;
-}
+    .pointer {
+       cursor: pointer;
+    }
 
-#timeline{
-width: 400px;
-height: 20px;
-background: gray;
-margin-top: 20px;
-border-radius: 15px;
-}
+    #timeline {
+        width: 400px;
+        height: 20px;
+        background: gray;
+        margin-top: 20px;
+        border-radius: 15px;
+    }
 
-#playhead{
-width: 18px;
-height: 18px;
-border-radius: 50%;
-margin-top: 1px;
-background: black;
-}
+    #playhead {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        margin-top: 1px;
+        background: black;
+    }
+
+    .time {
+        margin: 20px 20px 0px 20px;
+    }
+
+    .horizonal-layout {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 
 <h1 class="text-center">{{ title }}</h1>
@@ -35,7 +47,7 @@ background: black;
             <td (click)="playSelectedSong(i)">{{ i + 1 }}. {{ song.name }}</td><td>{{artist}}</td>
         </tr>
     </table>
-</div>
+
 <div class="text-center">{{ currentSongId + 1 }} - {{ currentSong.name }}</div>
 <div class="text-center">
     <button (click)="changeSong('prev')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
@@ -51,12 +63,18 @@ background: black;
 
 </div>
 
-    <!--<div id="timeline" #timeline class="center-block">
-        <div id="playhead" #playhead></div>
-    </div>-->
 
-
-<audio #player (ended)="changeSong('next')" (timeupdate)="timeUpdate()">
+    <div class="horizonal-layout" draggable="false">
+        <div class="time" draggable="false">{{ currentMinute }}:{{ currentSecond }}</div>
+        <div draggable="false">
+            <div id="timeline" #timeline (mousedown)="handleMouseDown($event)" draggable="false">
+                <div id="playhead" #playhead draggable="false"></div>
+            </div>
+        </div>
+        <div class="time" draggable="false">{{ minutes }}:{{ seconds }}</div>
+    </div>
+</div>
+<audio #player (ended)="changeSong('next')" (timeupdate)="timeUpdate()"  (canplaythrough)="setDuration()">
     <source [src]="currentSongPath" type="audio/ogg">
     <source [src]="currentSongPath" type="audio/mpeg">
 </audio>
