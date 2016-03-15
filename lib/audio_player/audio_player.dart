@@ -1,12 +1,13 @@
 import 'package:angular2/angular2.dart';
-import 'model/albums.dart';
+import 'model/album.dart';
 import 'dart:html';
-import 'dart:convert';
 import 'dart:async';
+import 'package:thesonsofmosiah/audio_player/services/songs_services.dart';
 
 @Component(
     selector: 'audio-player',
-    templateUrl: 'audio_player.html')
+    templateUrl: 'audio_player.html',
+    providers: const [SongsServices])
 
 class AudioPlayer {
   @ViewChild("player") var player;
@@ -15,7 +16,7 @@ class AudioPlayer {
 
   String title = "Audio Player";
 
-  String get pathToSongs => "data/songs.json";
+  String get pathToSongs => "data/album.json";
   String get pathToAudio => "audio/";
   List<Album> songList;
   int currentSongId = 0;
@@ -44,9 +45,11 @@ class AudioPlayer {
   String currentSecond = "00";
   bool isMouseDown = false;
 
-  AudioPlayer() {
-    print("go");
-    var request = HttpRequest.getString(pathToSongs).then(songsLoaded);
+  AudioPlayer(SongsServices songsService) {
+    songsService.getSongs().then(songsLoaded).then((_){
+      title = songsService.getAlbumTitle();
+      artist = songsService.getAlbumArtist();
+    });
 
     window.document.onMouseUp.listen((_) {
       if(isMouseDown) {
@@ -54,6 +57,16 @@ class AudioPlayer {
         handleMouseUp();
       }
     });
+  }
+
+  void songsLoaded(List<Album> data) {
+    print("go test go ninja");
+    songList = data;
+    print(songList);
+    currentSong = songList[0];
+    currentSongPath = "$pathToAudio${currentSong.url}";
+    currentSong.selected = true;
+    Timer.run(loadSong);
   }
 
   ngAfterViewInit() {
@@ -85,20 +98,6 @@ class AudioPlayer {
     } else {
       currentSecond = cd.inSeconds.remainder(60).toString();
     }
-  }
-
-
-  void songsLoaded(String responseText) {
-    var decoded = JSON.decode(responseText);
-    title = decoded["title"];
-    artist = decoded["artist"];
-    List<Map> mapList = decoded["songs"].toList();
-    songList = mapList.map((Map element) => new Album.fromMap(element)).toList();
-//    print(songList);
-    currentSong = songList[0];
-    currentSongPath = "$pathToAudio${currentSong.url}";
-    currentSong.selected = true;
-    Timer.run(loadSong);
   }
 
   void changeSong(String direction) {

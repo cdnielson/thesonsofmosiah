@@ -4,7 +4,8 @@
 import 'package:angular2/bootstrap.dart';
 
 import 'package:thesonsofmosiah/app_component.dart';
+import 'package:thesonsofmosiah/services/site_services.dart';
 
 main() {
-  bootstrap(AppComponent);
+  bootstrap(AppComponent, [SiteService]);
 }

@@ -1,0 +1,14 @@
+{
+  "siteTitle":"The Sons of Mosiah",
+  "backgroundUrl":"background.jpg",
+  "logo":"",
+  "menuColor":"black",
+  "aboutText":"This is a test of about text.",
+  "contactInfo": {
+      "name": "Folk Prophet L.L.C.",
+      "streetAddress": "3536 South Hawk Drive",
+      "cityStateZip": "Saratoga Springs, Utah, 84045",
+      "phone": "801-885-6258",
+      "email": "cdnielson@folkprophet.com"
+    }
+}

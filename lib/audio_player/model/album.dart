@@ -1,6 +1,6 @@
-library albums;
+library album;
 
-class Album extends Object {
+class Album {
   final String name;
   final String url;
 

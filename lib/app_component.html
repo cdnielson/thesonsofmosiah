@@ -1,23 +1,27 @@
-<div class="container" id="home">
-    <ul class="topMenuBar list-unstyled list-inline text-right" id="menu">
+<style>
+
+</style>
+
+<div class="container" id="home" [ngStyle]="{'background-image': background}">
+    <ul class="topMenuBar list-unstyled list-inline text-right" id="menu" [ngStyle]="{'color': siteData?.menuColor}">
         <li onclick="scrollToElement('#about')" class="h4 topMenu">ABOUT</li>
         <li onclick="scrollToElement('#listen')" class="h4 topMenu">LISTEN</li>
         <li onclick="scrollToElement('#people')" class="h4 topMenu">PEOPLE</li>
         <li onclick="scrollToElement('#contact')" class="h4 topMenu">CONTACT</li>
     </ul>
 
-    <ul class="topMenuList list-unstyled text-right" id="menu-list">
+    <!--<ul class="topMenuList list-unstyled text-right" id="menu-list" [ngStyle]="{'color': siteData['menuColor']}">
         <li onclick="scrollToElement('#about')" class="h4 topMenu">ABOUT</li>
         <li onclick="scrollToElement('#listen')" class="h4 topMenu">LISTEN</li>
         <li onclick="scrollToElement('#people')" class="h4 topMenu">PEOPLE</li>
         <li onclick="scrollToElement('#contact')" class="h4 topMenu">CONTACT</li>
-    </ul>
-
+    </ul>-->
+    <img [hidden]="hideLogo" [src]="logo" id="logo"/>
 </div>
 
 <div id="about" class="spacing gray">
     <h2 class="text-center">ABOUT</h2>
-    <p class="text-center">Coming soon</p>
+    <p class="text-center">{{ siteData?.aboutText }}</p>
 
 </div>
 
@@ -37,11 +41,11 @@
 
 <div id="contact" class="spacing white">
     <h2 class="text-center">CONTACT</h2>
-    <p class="text-center">Folk Prophet Books/Entertainment
-    <br>3536 South Hawk Drive
-    <br>Saratoga Springs, UT 84045
-    <br><a href="mailto:cdnielson@folkprophet.com">cdnielson@folkprophet.com</a>
-    </p>
+    <!--<p class="text-center">{{ siteData["contactInfo"]["name"] }}
+    <br>{{ siteData["contactInfo"]["streetAddress"] }}
+    <br>{{ siteData["contactInfo"]["cityStateZip"] }}
+    <br><a href="{{ siteData['contactInfo']['email'] }}">{{ siteData["contactInfo"]["email"] }}</a>
+    </p>-->
 </div>
 
 <div class="spacing gray">
