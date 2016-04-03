@@ -14,5 +14,11 @@
   "people": [
     {"name":"Charles Dail Nielson", "role":"Composer, Librettist, Lyricist, Orchestrator, Demo Singer"},
     {"name":"Bryony Danae Nielson", "role":"Demo Singer"}
+  ],
+  "sections": [
+    "about",
+    "listen",
+    "people",
+    "contact"
   ]
 }

@@ -5,10 +5,16 @@ import 'dart:async';
     selector: 'menu-bar',
     templateUrl: 'menu_bar.html')
 class MenuBar {
-  @Input("menuDirection") String menuDirection;
+  @Input("menuClass") String menuClass;
   @Input("siteData") Site siteData;
+  @Input("showHome") bool showHome;
+  @Output() EventEmitter clicked = new EventEmitter();
 
   MenuBar() {
-    Timer.run(() => print("menuDirection $menuDirection"));
+
+  }
+
+  handleClicked(data) {
+    clicked.emit(data);
   }
 }

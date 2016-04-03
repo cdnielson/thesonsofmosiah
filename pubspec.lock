@@ -13,6 +13,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0-beta.6"
+  animation:
+    description:
+      name: animation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.24"
   args:
     description:
       name: args

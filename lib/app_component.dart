@@ -4,9 +4,12 @@
 import 'package:angular2/angular2.dart';
 import 'audio_player/audio_player.dart';
 import 'dart:html';
+import 'dart:core';
+
 import 'package:thesonsofmosiah/services/site_services.dart';
 import 'package:thesonsofmosiah/menu/menu_bar.dart';
 import 'package:thesonsofmosiah/model/site.dart';
+import 'package:animation/animation.dart';
 
 @Component(
     selector: 'my-app',
@@ -37,4 +40,19 @@ class AppComponent {
     document.title = siteData.siteTitle;
     dataLoaded = true;
   }
+
+  void scrollTest(data) {
+    var elLoc = querySelector('#' + data).offsetTop;
+
+    //animation to figure out later
+    /*var el = querySelector('#' + data);
+    var properties = {
+      'left': 1000,
+      'top': 350
+    };
+    animate(el, properties: properties, duration: 5000);*/
+
+    window.scrollTo(0, elLoc);
+  }
+
 }

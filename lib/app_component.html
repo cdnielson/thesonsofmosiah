@@ -1,10 +1,16 @@
-<style>
-
-</style>
-
 <div class="container" id="home" [ngStyle]="{'background-image': background}">
-    <menu-bar class="topMenuBar" [menuDirection]="'row'" [siteData]="siteData"></menu-bar>
-    <menu-bar class="topMenuBar2" [menuDirection]="'column'" [siteData]="siteData"></menu-bar>
+    <menu-bar class="topMenuBar"
+              [menuClass]="'horizontal layout end-justified'"
+              [siteData]="siteData"
+              (clicked)="scrollTest($event)"
+              [showHome]="false">
+    </menu-bar>
+    <menu-bar class="topMenuBar2"
+              [menuClass]="'vertical layout end-justified'"
+              [siteData]="siteData"
+              (clicked)="scrollTest($event)"
+              [showHome]="false">
+    </menu-bar>
 
     <img [hidden]="hideLogo" [src]="logo" id="logo"/>
 </div>
@@ -39,16 +45,15 @@
         </p>
 </div>
 
-<div class="spacing gray">
+<div id="test" class="spacing gray">
 
 </div>
 
 <div class="bottom-menu">
-    <ul class="list-unstyled list-inline text-center" style="width: 100%;">
-        <li onclick="scrollToElement('#home')" id="back-to-top" class="h4 topMenu">HOME</li>
-        <li onclick="scrollToElement('#about')" class="h4 topMenu">ABOUT</li>
-        <li onclick="scrollToElement('#listen')" class="h4 topMenu">LISTEN</li>
-        <li onclick="scrollToElement('#people')" class="h4 topMenu">PEOPLE</li>
-        <li onclick="scrollToElement('#contact')" class="h4 topMenu">CONTACT</li>
-    </ul>
+    <menu-bar [menuClass]="'horizontal layout around-justified flex wrap'"
+              [siteData]="siteData"
+              (clicked)="scrollTest($event)"
+              [showHome]="true"
+              style="width: 100%;">
+    </menu-bar>
 </div>

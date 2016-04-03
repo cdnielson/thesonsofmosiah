@@ -8,6 +8,7 @@ class Site {
   final String aboutText;
   final Map contactInfo;
   final List people;
+  final List sections;
 
   Site(
       String this.siteTitle,
@@ -16,7 +17,8 @@ class Site {
       String this.menuColor,
       String this.aboutText,
       Map this.contactInfo,
-      List this.people);
+      List this.people,
+      List this.sections);
 
   Site.fromMap(Map<String, Object> map) : this(
       map["siteTitle"],
@@ -25,7 +27,8 @@ class Site {
       map["menuColor"],
       map["aboutText"],
       map["contactInfo"],
-      map["people"]);
+      map["people"],
+      map["sections"]);
 
   @override String toString() => "$siteTitle";
 }

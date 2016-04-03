@@ -161,9 +161,11 @@ class AudioPlayer {
   void setDuration() {
     num songDuration = player.nativeElement.duration;
     print("duration $songDuration");
-    /*if (songDuration.isInfinite) {
+    //comment out for production
+    if (songDuration.isInfinite) {
       songDuration = 33;
-    }*/
+    }
+
     d = new Duration(seconds: songDuration);
     if (d.inMinutes < 10) {
       minutes = "0" + d.inMinutes.toString();
