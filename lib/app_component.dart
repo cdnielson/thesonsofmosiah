@@ -5,12 +5,13 @@ import 'package:angular2/angular2.dart';
 import 'audio_player/audio_player.dart';
 import 'dart:html';
 import 'package:thesonsofmosiah/services/site_services.dart';
+import 'package:thesonsofmosiah/menu/menu_bar.dart';
 import 'package:thesonsofmosiah/model/site.dart';
 
 @Component(
     selector: 'my-app',
     templateUrl: 'app_component.html',
-    directives: const [AudioPlayer])
+    directives: const [AudioPlayer, MenuBar])
 class AppComponent {
 
   String get pathToImages => "images/";
@@ -18,6 +19,7 @@ class AppComponent {
   String background = "";
   String logo = "";
   bool hideLogo = false;
+  bool dataLoaded = false;
 
   AppComponent(SiteService site) {
     site.getSite().then(siteDataLoaded);
@@ -33,5 +35,6 @@ class AppComponent {
     logo = "$pathToImages${siteData.logo}";
     print(siteData.contactInfo["name"]);
     document.title = siteData.siteTitle;
+    dataLoaded = true;
   }
 }

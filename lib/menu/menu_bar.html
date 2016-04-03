@@ -1,0 +1,8 @@
+<ul id="menu"
+    style="list-style-type: none; display: flex; flex-wrap: nowrap; justify-content: flex-end; align-items: flex-end;"
+    [ngStyle]="{'color': siteData?.menuColor, 'flex-direction': menuDirection}">
+    <li onclick="scrollToElement('#about')" class="h4 topMenu">ABOUT</li>
+    <li onclick="scrollToElement('#listen')" class="h4 topMenu">LISTEN</li>
+    <li onclick="scrollToElement('#people')" class="h4 topMenu">PEOPLE</li>
+    <li onclick="scrollToElement('#contact')" class="h4 topMenu">CONTACT</li>
+</ul>

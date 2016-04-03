@@ -44,6 +44,8 @@ class AudioPlayer {
   String currentMinute = "00";
   String currentSecond = "00";
   bool isMouseDown = false;
+  String playerHeight = "400px";
+  String playerOverflow = "scroll";
 
   AudioPlayer(SongsServices songsService) {
     songsService.getSongs().then(songsLoaded).then((_){
@@ -157,8 +159,11 @@ class AudioPlayer {
   }
 
   void setDuration() {
-    songDuration = player.nativeElement.duration;
+    num songDuration = player.nativeElement.duration;
     print("duration $songDuration");
+    /*if (songDuration.isInfinite) {
+      songDuration = 33;
+    }*/
     d = new Duration(seconds: songDuration);
     if (d.inMinutes < 10) {
       minutes = "0" + d.inMinutes.toString();
@@ -170,7 +175,6 @@ class AudioPlayer {
     } else {
       seconds = d.inSeconds.remainder(60).toString();
     }
-
   }
 
   void playSelectedSong(selectedSongId) {

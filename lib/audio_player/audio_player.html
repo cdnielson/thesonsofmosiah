@@ -38,30 +38,32 @@
 
 <h1 class="text-center">{{ title }}</h1>
 <div class="container">
-    <table class="table">
-        <tr>
-            <th>Song</th>
-            <th>Artist</th>
-        </tr>
-        <tr *ngFor="#song of songList; #i = index" [class.highlight]="song.selected" class="pointer">
-            <td (click)="playSelectedSong(i)">{{ i + 1 }}. {{ song.name }}</td><td>{{artist}}</td>
-        </tr>
-    </table>
+    <div [ngStyle]="{'height': playerHeight, 'overflow': playerOverflow}">
+        <table class="table">
+            <tr>
+                <th>Song</th>
+                <th>Artist</th>
+            </tr>
+            <tr *ngFor="#song of songList; #i = index" [class.highlight]="song.selected" class="pointer">
+                <td (click)="playSelectedSong(i)">{{ i + 1 }}. {{ song.name }}</td><td>{{artist}}</td>
+            </tr>
+        </table>
+    </div>
 
-<div class="text-center">{{ currentSongId + 1 }} - {{ currentSong.name }}</div>
-<div class="text-center">
-    <button (click)="changeSong('prev')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
+    <div class="text-center">{{ currentSongId + 1 }} - {{ currentSong.name }}</div>
+    <div class="text-center">
+        <button (click)="changeSong('prev')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
 
-        <button (click)="play()" class="btn btn-default btn-lg">
-            <div [hidden]="playPause"><span aria-hidden="true" class="glyphicon glyphicon-play"></span></div>
-            <div [hidden]="!playPause"><span aria-hidden="true" class="glyphicon glyphicon-pause"></span></div>
-        </button>
+            <button (click)="play()" class="btn btn-default btn-lg">
+                <div [hidden]="playPause"><span aria-hidden="true" class="glyphicon glyphicon-play"></span></div>
+                <div [hidden]="!playPause"><span aria-hidden="true" class="glyphicon glyphicon-pause"></span></div>
+            </button>
 
 
-    <button (click)="stop()" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
-    <button (click)="changeSong('next')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
+        <button (click)="stop()" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
+        <button (click)="changeSong('next')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
 
-</div>
+    </div>
 
 
     <div class="horizonal-layout" draggable="false">

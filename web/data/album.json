@@ -1,29 +1,10 @@
 { "title" : "The Sons of Mosiah",
-  "artist" : "Charles Dail Nielson",
+  "artist" : "AC/DC",
   "songs" :
   [
     {
       "name": "Back in Black",
       "url": "back_in_black.ogg"
-    },
-    {
-      "name": "Cursed/The Sons of Mosiah",
-      "url": "cursed.mp3"
-    },
-    {
-
-      "name": "To Me He Doth Not Stink",
-      "url": "to_me_he_doth_not_stink.mp3"
-    },
-    {
-
-      "name": "Somewhere Beyond This Slumber",
-      "url": "somewhere_beyond_this_slumber.mp3"
-    },
-    {
-
-      "name": "The Love We Share",
-      "url": "the_love_we_share.mp3"
     }
   ]
 }

@@ -3,19 +3,9 @@
 </style>
 
 <div class="container" id="home" [ngStyle]="{'background-image': background}">
-    <ul class="topMenuBar list-unstyled list-inline text-right" id="menu" [ngStyle]="{'color': siteData?.menuColor}">
-        <li onclick="scrollToElement('#about')" class="h4 topMenu">ABOUT</li>
-        <li onclick="scrollToElement('#listen')" class="h4 topMenu">LISTEN</li>
-        <li onclick="scrollToElement('#people')" class="h4 topMenu">PEOPLE</li>
-        <li onclick="scrollToElement('#contact')" class="h4 topMenu">CONTACT</li>
-    </ul>
+    <menu-bar class="topMenuBar" [menuDirection]="'row'" [siteData]="siteData"></menu-bar>
+    <menu-bar class="topMenuBar2" [menuDirection]="'column'" [siteData]="siteData"></menu-bar>
 
-    <!--<ul class="topMenuList list-unstyled text-right" id="menu-list" [ngStyle]="{'color': siteData['menuColor']}">
-        <li onclick="scrollToElement('#about')" class="h4 topMenu">ABOUT</li>
-        <li onclick="scrollToElement('#listen')" class="h4 topMenu">LISTEN</li>
-        <li onclick="scrollToElement('#people')" class="h4 topMenu">PEOPLE</li>
-        <li onclick="scrollToElement('#contact')" class="h4 topMenu">CONTACT</li>
-    </ul>-->
     <img [hidden]="hideLogo" [src]="logo" id="logo"/>
 </div>
 
@@ -25,27 +15,28 @@
 
 </div>
 
-<div id="listen" class="spacing white">
+<div class="spacing white">
     <h2 class="text-center">LISTEN</h2>
-    <audio-player></audio-player>
+    <audio-player id="listen"></audio-player>
 </div>
 
-<div id="people" class="spacing gray">
+<div id="people" class="spacing gray" *ngIf="dataLoaded">
 
     <h2 class="text-center">PEOPLE</h2>
-    <p class="text-center">Charles Dail Nielson - Composer, Librettist, Lyricist, Orchestrator</p>
-    <p class="text-center">Coming soon</p>
+    <div *ngFor="#data of siteData.people">
+        <p class="text-center">{{ data['name'] }} - {{ data['role'] }}</p>
+    </div>
 
 
 </div>
 
-<div id="contact" class="spacing white">
+<div id="contact" class="spacing white" *ngIf="dataLoaded">
     <h2 class="text-center">CONTACT</h2>
-    <!--<p class="text-center">{{ siteData["contactInfo"]["name"] }}
-    <br>{{ siteData["contactInfo"]["streetAddress"] }}
-    <br>{{ siteData["contactInfo"]["cityStateZip"] }}
-    <br><a href="{{ siteData['contactInfo']['email'] }}">{{ siteData["contactInfo"]["email"] }}</a>
-    </p>-->
+    <p class="text-center">{{ siteData?.contactInfo['name'] }}
+        <br>{{ siteData?.contactInfo['streetAddress'] }}
+        <br>{{ siteData?.contactInfo['cityStateZip'] }}
+        <br><a href="{{ siteData?.contactInfo['email'] }}">{{ siteData?.contactInfo['email'] }}</a>
+        </p>
 </div>
 
 <div class="spacing gray">

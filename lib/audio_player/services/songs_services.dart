@@ -10,12 +10,10 @@ class SongsServices {
   Map decoded;
 
   Future getSongs() {
-    Future songsReceived = HttpRequest.getString(pathToSongs).then((data) {
+    return HttpRequest.getString(pathToSongs).then((data) {
       decoded = JSON.decode(data);
-      List<Album> albumSongList = decoded["songs"].map((Map element) => new Album.fromMap(element)).toList();
-      return albumSongList;
+      return decoded["songs"].map((Map element) => new Album.fromMap(element)).toList();
     });
-    return songsReceived;
   }
 
   String getAlbumTitle() {
