@@ -3,11 +3,13 @@ import 'model/album.dart';
 import 'dart:html';
 import 'dart:async';
 import 'package:thesonsofmosiah/audio_player/services/songs_services.dart';
+import 'package:thesonsofmosiah/audio_player/pipes/format_seconds.dart';
 
 @Component(
     selector: 'audio-player',
     templateUrl: 'audio_player.html',
-    providers: const [SongsServices])
+    providers: const [SongsServices],
+    pipes: const [FormatSeconds])
 
 class AudioPlayer {
   @ViewChild("player") var player;
@@ -95,16 +97,9 @@ class AudioPlayer {
 
   void calcTimeForDisplay() {
     cd = new Duration(seconds: currentTime);
-    if (cd.inMinutes < 10) {
-      currentMinute = "0" + cd.inMinutes.toString();
-    } else {
-      currentMinute = cd.inMinutes.toString();
-    }
-    if (cd.inSeconds < 10 ) {
-      currentSecond = "0" + cd.inSeconds.remainder(60).toString();
-    } else {
-      currentSecond = cd.inSeconds.remainder(60).toString();
-    }
+
+    currentMinute = cd.inMinutes.toString();
+    currentSecond = cd.inSeconds.remainder(60).toString();
   }
 
   void changeSong(String direction) {
@@ -165,7 +160,7 @@ class AudioPlayer {
 
   void setDuration() {
     songDuration = player.nativeElement.duration;
-    print("duration $songDuration");
+
     //comment out for production
     if (songDuration.isInfinite) {
       songDuration = 25;
@@ -173,16 +168,9 @@ class AudioPlayer {
     }
 
     d = new Duration(seconds: songDuration);
-    if (d.inMinutes < 10) {
-      minutes = "0" + d.inMinutes.toString();
-    } else {
-      minutes = d.inMinutes.toString();
-    }
-    if (d.inSeconds < 10) {
-      seconds = "0" + d.inSeconds.remainder(60).toString();
-    } else {
-      seconds = d.inSeconds.remainder(60).toString();
-    }
+    minutes = d.inMinutes.toString();
+    seconds = d.inSeconds.remainder(60).toString();
+
   }
 
   void playSelectedSong(selectedSongId) {

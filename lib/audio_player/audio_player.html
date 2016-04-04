@@ -73,13 +73,13 @@
 
 
     <div class="horizonal-layout" draggable="false">
-        <div class="time" draggable="false">{{ currentMinute }}:{{ currentSecond }}</div>
+        <div class="time" draggable="false">{{ currentMinute }}:{{ currentSecond | formatseconds }}</div>
         <div>
             <div id="timeline" #timeline (mousedown)="handleMouseDown($event)" (click)="movePlayHead($event)">
                 <div id="playhead" #playhead [ngStyle]="{'margin-left': playHeadPosition}"></div>
             </div>
         </div>
-        <div class="time" draggable="false">{{ minutes }}:{{ seconds }}</div>
+        <div class="time" draggable="false">{{ minutes }}:{{ seconds | formatseconds }}</div>
     </div>
 </div>
 <audio #player (ended)="changeSong('next')" (timeupdate)="timeUpdate()" (canplaythrough)="setDuration()">
