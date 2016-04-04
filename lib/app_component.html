@@ -1,149 +1,34 @@
-<div class="container" id="home" [ngStyle]="{'background-image': background}">
-    <menu-bar class="topMenuBar"
-              [menuClass]="'horizontal layout end-justified'"
-              [siteData]="siteData"
-              (clicked)="scrollTest($event)"
-              [showHome]="false">
-    </menu-bar>
-    <menu-bar class="topMenuBar2"
-              [menuClass]="'vertical layout end-justified'"
-              [siteData]="siteData"
-              (clicked)="scrollTest($event)"
-              [showHome]="false">
-    </menu-bar>
-
-    <img [hidden]="hideLogo" [src]="logo" id="logo"/>
-</div>
-
-<div id="about" class="spacing gray">
-    <h2 class="text-center">ABOUT</h2>
-    <p class="text-center">{{ siteData?.aboutText }}</p>
-    <h3>Characters</h3>
-    Ammon - A 20-30 something Nephite<br>
-    Aaron - A 20-30 something Nephite<br>
-    Omner - A 20-30 something Nephite<br>
-    Himi - A 20-30 something Nephite<br>
-    Abish - An 18 year old Lamanite<br>
-    Gokkcha'ar* - A 24 year old Lamanite servant to King Lamoni and love interest of Abish<br>
-    Samuel - Gokkcha'ar's cousin, an older Lamanite servant to King Lamoni who secretly loves Lorhah<br>
-    Lorhah - An older Lamanite and friend of Abish and servant of the Queen who secretly loves Samuel<br>
-    Lamoni - King of the land where Ammon goes to preach<br>
-    The Queen - King Lamoni's wife<br><br>
-    *Note that some names (particularly Klingon sounding ones) are placeholders<br><br>
-    <div class="text-center">
-    <h3>Song Titles and Synopsis</h3>
-    <h4>ACT I</h4>
-    <p><strong>Cursed/The Sons of Mosiah</strong> (The Nephites)<br>
-        Chorus number setting up the story that the sons of Mosiah are going to a filthy, vile, hated people to preach
-        the gospel to them.<br><br>
-    <strong>Take Courage and Go Forth</strong> (Ammon, Aaron, Omner, Himni)<br>
-        The sons of Mosiah prepare for their visit<br><br>
-    <strong>Wronged</strong> (The Lamanites, Ammon, Aaron, Omner, Himni)<br>
-        The Lamanites tell of how they were wronged by their forefather's brethren, the forefathers of the Nephites.
-        The sons of Mosiah try and preach to them and are rejected repeatedly.<br><br>
-    <strong>The Custom</strong> (Gokkcha’ar, Abish, Lamanite Servant)<br>
-        Gokkcha'ar and Abish have a bit of a tiff about Gokkcha'ar's new assignment to watch the king's sheep where it
-        is well know that robbers scatter the sheep and then the king has his servants killed. They also debate the
-        truth of God, which Gokkcha'ar does not believe Ammon arrives and Gokkcha'ar and some other servants grab him,
-        bind him and take him to the king.<br><br>
-    <strong>The Vision</strong> (Abish)<br>
-        Abish tells of her vision from God of His existence and of Christ's.<br><br>
-    <strong>Weary World</strong> (Lamoni)<br>
-        The king laments about the lack of joy in the world but has hope that there's something better.<br><br>
-    <strong>Kneel Before Your King</strong> (The First, Lamoni, Gokkcha’ar)<br>
-        Lamoni is honored by his servants and attendants. Gokkcha'ar brings Ammon before him. Lamoni asks Ammon what he
-        desires.<br><br>
-    <strong>‘Til the Day I Die</strong> (Ammon)<br>
-        Ammon explains that his desire is to dwell among the Lamanites, perhaps until the day he dies.<br><br>
-    <strong>What Will Be Tonight</strong> (Abish, Samuel, Lorhah)<br>
-        Abish and Lorhah meet with Samuel on his way for the nightly watch of the sheep. Abish tells him to take care
-        of Gokkcha'ar. He tells her that what will be will be and they simply had to do their duties. He and Lorhah
-        exchange greetings.<br><br>
-    <strong>Could You Love Me Too</strong> (Samuel and Lorhah)<br>
-        Samuel and Lorhah separately sing of their love for one another<br><br>
-    <strong>The Sun</strong> (Samuel)<br>
-        Samuel at the night watch tells of his hope that the morning will come without incident, using the Sun as an
-        allegory of good things<br><br>
-    <strong>It Was Amazing</strong> (Gokkcha’ar)<br>
-        The next morning in Lamoni's court Gokkcha'ar enters and tells of Ammon's amazing feats in defeating the robbers
-        and in cutting off their arms, and how he could not be killed.<br><br>
-    <strong>The Great Spirit</strong> (Lamoni, Ammon)<br>
-        Ammon comes before Lamoni. The king asks him by what power he does what he does. Ammon asks him if he knows God.
-        He says he does not. Ammon asks him if he believes in the great spirit. The king does.<br><br>
-    <strong>Behold, This is God</strong> (Ammon)<br>
-        Ammon explains God to king Lamoni.<br><br>
-    <strong>Yea, I Believe</strong> (Lamoni, Ammon)<br>
-        The king believe all of Ammons words.<br><br>
-    <strong>Lay Me Down</strong> (Lamoni, Servants)<br>
-        The king falls into a trance.<br><br>
-    <strong>To Me He Doth Not Stink</strong> (The Queen, Servants)<br>
-        Days later, the queen's servants are telling her that the king, still in his trance, is dead and that he stinks.
-        The queen doesn't believe he stinks.<br><br>
-    <strong>Blessed Be the Name of God/Yea, I Believe (reprise)</strong> (The Queen, Lamoni, Ammon, Servants)<br>
-        The queen calls for Ammon and asks if the king is dead. Ammon raises the king and Lamoni testifies to the queen.
-        <br><br>
-    <strong>Lay Me Down (reprise)</strong> (The Queen, Lamoni, Ammon, Servants)<br>
-        The queen, the king, Ammon, and all the household, including Lorhah, Samuel, and Gokkcha'ar are converted to the
-        Lord and fall into a trance.<br><br>
-    <strong>Beyond This Slumber</strong> (Abish)<br>
-        Abish expresses her joy that others now know of the truth of God.<br><br>
-    <strong>From House to House/Multitude</strong> (Abish, Lamanites)<br>
-        Abish runs from house to house to tell everyone of the miracle.<br><br>
-    <strong>Monster</strong> (Lamanites)<br>
-        The gathered Lamanites at the king's court argue about the nature of Ammon and the state of those in the trance.
-        <br><br>
-    <strong>As I Hold Your Hand</strong> (Abish)<br>
-        Abish raises those in a trance by touching their hands.<br><br>
-    <strong>From the Fountain of His Love</strong> (Abish, Gokkcha’ar)<br>
-        Abish and Gokkcha'ar sing of their strengthened love and their trust and believe in God.
-    </p>
-    <h4>ACT II</h4>
-
-    <i>...The completion of the songs and synopsis of Act II is forthcoming. Check back later...</i><br><br>
-
-    <p><strong>Bury our Weapons</strong><br>
-        The Lamanites tell of their covenant to never carry weapons again and they bury them as a witness of this.<br><br>
-    <strong>The Love We Share</strong><br>
-        Abish and Gokkcha'ar and Samuel and Lorhah sing of their willingness to die at the hands of the coming Lamanite
-        horde.
-    </p>
+<div *ngIf="dataLoaded">
+    <button (click)="swapSite('tsom')">TSOM</button>
+    <div class="container" id="home" [ngStyle]="{'background-image': background}">
+        <menu-bar class="topMenuBar"
+                  [menuClass]="'horizontal layout end-justified'"
+                  [siteData]="siteData"
+                  (clicked)="scrollTest($event)"
+                  [showHome]="false">
+        </menu-bar>
+        <menu-bar class="topMenuBar2"
+                  [menuClass]="'vertical layout end-justified'"
+                  [siteData]="siteData"
+                  (clicked)="scrollTest($event)"
+                  [showHome]="false">
+        </menu-bar>
+        <img [hidden]="hideLogo" [src]="logo" id="logo"/>
     </div>
+    <about-page *ngIf="siteData?.sections['about']" [siteData]="siteData"></about-page>
+    <projects-page *ngIf="siteData?.sections['projects']"></projects-page>
+    <books-page *ngIf="siteData?.sections['books']"></books-page>
+    <listen-page *ngIf="siteData?.sections['listen']" [siteData]="siteData"></listen-page>
+    <people-page *ngIf="siteData?.sections['people']" [siteData]="siteData"></people-page>
+    <contact-page *ngIf="siteData?.sections['contact']" [siteData]="siteData"></contact-page>
 
-</div>
-
-<div class="spacing white">
-    <h2 class="text-center">LISTEN</h2>
-    <audio-player id="listen"></audio-player>
-</div>
-
-<div id="people" class="spacing gray" *ngIf="dataLoaded">
-
-    <h2 class="text-center">PEOPLE</h2>
-    <div *ngFor="#data of siteData.people">
-        <p class="text-center">{{ data['name'] }} - {{ data['role'] }}</p>
+    <div id="blank_footer" class="spacing gray"></div>
+    <div class="bottom-menu">
+        <menu-bar [menuClass]="'horizontal layout around-justified flex wrap'"
+                  [siteData]="siteData"
+                  (clicked)="scrollTest($event)"
+                  [showHome]="true"
+                  style="width: 100%;">
+        </menu-bar>
     </div>
-
-
-</div>
-
-<div id="contact" class="spacing white" *ngIf="dataLoaded">
-    <h2 class="text-center">CONTACT</h2>
-    <p class="text-center">{{ siteData?.contactInfo['name'] }}
-        <br>{{ siteData?.contactInfo['streetAddress'] }}
-        <br>{{ siteData?.contactInfo['cityStateZip'] }}
-        <br><a href="{{ siteData?.contactInfo['email'] }}">{{ siteData?.contactInfo['email'] }}</a>
-        </p>
-</div>
-
-<div id="test" class="spacing gray">
-
-</div>
-
-<div class="bottom-menu">
-    <menu-bar [menuClass]="'horizontal layout around-justified flex wrap'"
-              [siteData]="siteData"
-              (clicked)="scrollTest($event)"
-              [showHome]="true"
-              style="width: 100%;">
-    </menu-bar>
 </div>

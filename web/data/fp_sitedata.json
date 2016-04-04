@@ -1,0 +1,28 @@
+{
+  "siteTitle":"Folk Prophet",
+  "backgroundUrl":"fp/background.jpg",
+  "logo":"fp.jpg",
+  "menuColor":"black",
+  "aboutText":"Folk Prophet LLC is a company with three primary divisions. Musical Theater development, book publishing, and web development.",
+  "contactInfo": {
+    "name": "Folk Prophet L.L.C.",
+    "streetAddress": "3536 South Hawk Drive",
+    "cityStateZip": "Saratoga Springs, Utah, 84045",
+    "phone": "801-885-6258",
+    "email": "cdnielson@folkprophet.com"
+  },
+  "people": [
+    {"name":"Charles Dail Nielson", "role":"Composer, Librettist, Lyricist, Orchestrator, Demo Singer, Author"},
+    {"name":"Mary G. Nielson", "role":"Author, Lyricist"},
+    {"name":"Chris Evans", "role":"Composer"},
+    {"name":"Danae Dana", "role":"Author"}
+  ],
+  "sections": {
+    "about": true,
+    "projects": true,
+    "books": true,
+    "people": true,
+    "listen": false,
+    "contact": true
+  }
+}

@@ -1,6 +1,6 @@
 {
   "siteTitle":"The Sons of Mosiah",
-  "backgroundUrl":"background.jpg",
+  "backgroundUrl":"tsom/background.jpg",
   "logo":"",
   "menuColor":"black",
   "aboutText":"THE SONS OF MOSIAH is a musical based on the story in THE BOOK OF MORMON of Ammon, Aaron, Omner and Himni's visit to the Lamanites as missionaries in the book of ALMA, chapters 17-27. That story only outlines the primary plot, however, which is based on that story but involves mostly fictional characters. Any of this may change, however, as it is a work-in-progress.",
@@ -15,10 +15,12 @@
     {"name":"Charles Dail Nielson", "role":"Composer, Librettist, Lyricist, Orchestrator, Demo Singer"},
     {"name":"Bryony Danae Nielson", "role":"Demo Singer"}
   ],
-  "sections": [
-    "about",
-    "listen",
-    "people",
-    "contact"
-  ]
+  "sections": {
+    "about": true,
+    "projects": false,
+    "books": false,
+    "people": true,
+    "listen": true,
+    "contact": true
+  }
 }

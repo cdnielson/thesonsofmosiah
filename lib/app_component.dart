@@ -2,21 +2,28 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular2/angular2.dart';
-import 'audio_player/audio_player.dart';
+
 import 'dart:html';
 import 'dart:core';
 
 import 'package:thesonsofmosiah/services/site_services.dart';
 import 'package:thesonsofmosiah/menu/menu_bar.dart';
+import 'package:thesonsofmosiah/page_components/about_page.dart';
+import 'package:thesonsofmosiah/page_components/people_page.dart';
+import 'package:thesonsofmosiah/page_components/contact_page.dart';
+import 'package:thesonsofmosiah/page_components/listen_page.dart';
+import 'package:thesonsofmosiah/page_components/projects_page.dart';
+import 'package:thesonsofmosiah/page_components/books_page.dart';
 import 'package:thesonsofmosiah/model/site.dart';
 import 'package:animation/animation.dart';
 
 @Component(
     selector: 'my-app',
     templateUrl: 'app_component.html',
-    directives: const [AudioPlayer, MenuBar])
+    directives: const [MenuBar, AboutPage, PeoplePage, ProjectsPage, ContactPage, ListenPage, BooksPage])
 class AppComponent {
 
+  String siteToLoad = "fp";
   String get pathToImages => "images/";
   Site siteData;
   String background = "";
@@ -25,7 +32,7 @@ class AppComponent {
   bool dataLoaded = false;
 
   AppComponent(SiteService site) {
-    site.getSite().then(siteDataLoaded);
+    site.getSite(siteToLoad).then(siteDataLoaded);
   }
 
   void siteDataLoaded(data) {
@@ -53,6 +60,11 @@ class AppComponent {
     animate(el, properties: properties, duration: 5000);*/
 
     window.scrollTo(0, elLoc);
+  }
+
+  swapSite(siteToGet) {
+    SiteService site = new SiteService();
+    site.getSite(siteToGet).then(siteDataLoaded);
   }
 
 }

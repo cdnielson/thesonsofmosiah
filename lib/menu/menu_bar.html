@@ -2,5 +2,10 @@
     style="list-style-type: none;"
     [ngClass]="menuClass">
     <li *ngIf="showHome" (click)="handleClicked('home')" class="h4 topMenu">HOME</li>
-    <li (click)="handleClicked(menuOption)" class="h4 topMenu" *ngFor="#menuOption of siteData?.sections">{{menuOption | uppercase }}</li>
+    <li *ngIf="siteData?.sections['about']" (click)="handleClicked('about')" class="h4 topMenu">ABOUT</li>
+    <li *ngIf="siteData?.sections['listen']" (click)="handleClicked('listen')" class="h4 topMenu">LISTEN</li>
+    <li *ngIf="siteData?.sections['projects']" (click)="handleClicked('projects')" class="h4 topMenu">PROJECTS</li>
+    <li *ngIf="siteData?.sections['books']" (click)="handleClicked('books')" class="h4 topMenu">BOOKS</li>
+    <li *ngIf="siteData?.sections['people']" (click)="handleClicked('people')" class="h4 topMenu">PEOPLE</li>
+    <li *ngIf="siteData?.sections['contact']" (click)="handleClicked('contact')" class="h4 topMenu">CONTACT</li>
 </ul>

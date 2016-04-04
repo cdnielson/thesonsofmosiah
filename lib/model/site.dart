@@ -8,7 +8,7 @@ class Site {
   final String aboutText;
   final Map contactInfo;
   final List people;
-  final List sections;
+  final Map sections;
 
   Site(
       String this.siteTitle,
@@ -18,7 +18,7 @@ class Site {
       String this.aboutText,
       Map this.contactInfo,
       List this.people,
-      List this.sections);
+      Map this.sections);
 
   Site.fromMap(Map<String, Object> map) : this(
       map["siteTitle"],
