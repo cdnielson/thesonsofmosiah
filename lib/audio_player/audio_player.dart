@@ -23,7 +23,7 @@ class AudioPlayer {
   Album currentSong = new Album.fromMap({});
   bool playing = false;
   String artist = "";
-  var songDuration;
+  num songDuration;
   int position = 0;
   String marginLeft = "Opx";
   var audio;
@@ -44,8 +44,9 @@ class AudioPlayer {
   String currentMinute = "00";
   String currentSecond = "00";
   bool isMouseDown = false;
-  String playerHeight = "400px";
+  String playerHeight = "350px";
   String playerOverflow = "scroll";
+  String playHeadPosition = "0px";
 
   AudioPlayer(SongsServices songsService) {
     songsService.getSongs().then(songsLoaded).then((_){
@@ -76,13 +77,17 @@ class AudioPlayer {
   }
 
   void timeUpdate() {
+    print("songDuration $songDuration");
     DivElement timeLine = timeline.nativeElement;
     DivElement playHead = playhead.nativeElement;
 
     timeLineWidth = timeLine.offsetWidth - playHead.offsetWidth;
+
     num percent = 100 * (timeLineWidth / timeLine.offsetWidth);
+
     num playPercent = percent *
         (player.nativeElement.currentTime / songDuration);
+
     playHead.style.marginLeft = playPercent.toString() + "%";
     currentTime = player.nativeElement.currentTime;
     calcTimeForDisplay();
@@ -159,11 +164,12 @@ class AudioPlayer {
   }
 
   void setDuration() {
-    num songDuration = player.nativeElement.duration;
+    songDuration = player.nativeElement.duration;
     print("duration $songDuration");
     //comment out for production
     if (songDuration.isInfinite) {
-      songDuration = 33;
+      songDuration = 25;
+      print(songDuration);
     }
 
     d = new Duration(seconds: songDuration);
@@ -215,15 +221,15 @@ class AudioPlayer {
     print(newMargLeft);
 
     if (newMargLeft != 0 || newMargLeft != timeLineWidth) {
-      playhead.nativeElement.style.marginLeft = newMargLeft.toString() + "px";
+      playHeadPosition = newMargLeft.toString() + "px";
     }
     if (newMargLeft <= 0) {
       sub.cancel();
-      playhead.nativeElement.style.marginLeft = "0px";
+      playHeadPosition = "0px";
     }
     if (newMargLeft >= timeLineWidth) {
       sub.cancel();
-      playhead.nativeElement.style.marginLeft = timeLineWidth + "px";
+      playHeadPosition = timeLineWidth + "px";
     }
   }
 
