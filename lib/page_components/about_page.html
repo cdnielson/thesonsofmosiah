@@ -1,6 +1,7 @@
 <div id="about" class="spacing gray">
     <h2 class="text-center">ABOUT</h2>
     <p class="text-center">{{ siteData?.aboutText }}</p>
+    <div *ngIf="siteData.siteTitle == 'The Sons of Mosiah'">
     <h3>Characters</h3>
     Ammon - A 20-30 something Nephite<br>
     Aaron - A 20-30 something Nephite<br>
@@ -90,5 +91,6 @@
             Abish and Gokkcha'ar and Samuel and Lorhah sing of their willingness to die at the hands of the coming Lamanite
             horde.
         </p>
+    </div>
     </div>
 </div>
