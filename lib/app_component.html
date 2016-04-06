@@ -1,32 +1,31 @@
-<div *ngIf="dataLoaded">
-    <button (click)="swapSite('tsom')">TSOM</button>
+<div *ngIf="dataLoaded" id="mainDiv">
     <div class="container" id="home" [ngStyle]="{'background-image': background}">
         <menu-bar class="topMenuBar"
                   [menuClass]="'horizontal layout end-justified'"
                   [siteData]="siteData"
-                  (clicked)="scrollTest($event)"
+                  (clicked)="handleScroll($event)"
                   [showHome]="false">
         </menu-bar>
         <menu-bar class="topMenuBar2"
                   [menuClass]="'vertical layout end-justified'"
                   [siteData]="siteData"
-                  (clicked)="scrollTest($event)"
+                  (clicked)="handleScroll($event)"
                   [showHome]="false">
         </menu-bar>
         <img [hidden]="hideLogo" [src]="logo" id="logo"/>
     </div>
-    <about-page *ngIf="siteData?.sections['about']" [siteData]="siteData"></about-page>
-    <projects-page *ngIf="siteData?.sections['projects']"></projects-page>
-    <books-page *ngIf="siteData?.sections['books']"></books-page>
-    <listen-page *ngIf="siteData?.sections['listen']" [siteData]="siteData"></listen-page>
-    <people-page *ngIf="siteData?.sections['people']" [siteData]="siteData"></people-page>
-    <contact-page *ngIf="siteData?.sections['contact']" [siteData]="siteData"></contact-page>
+    <about-page *ngIf="sectionData.about" [siteData]="siteData"></about-page>
+    <projects-page *ngIf="sectionData.projects" (newPage)="swapSite($event)"></projects-page>
+    <books-page *ngIf="sectionData.books"></books-page>
+    <listen-page *ngIf="sectionData.listen" [siteData]="siteData"></listen-page>
+    <people-page *ngIf="sectionData.people" [siteData]="siteData"></people-page>
+    <contact-page *ngIf="sectionData.contact" [siteData]="siteData"></contact-page>
 
     <div id="blank_footer" class="spacing gray"></div>
     <div class="bottom-menu">
         <menu-bar [menuClass]="'horizontal layout around-justified flex wrap'"
                   [siteData]="siteData"
-                  (clicked)="scrollTest($event)"
+                  (clicked)="handleScroll($event)"
                   [showHome]="true"
                   style="width: 100%;">
         </menu-bar>

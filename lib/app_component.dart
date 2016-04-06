@@ -15,7 +15,7 @@ import 'package:thesonsofmosiah/page_components/listen_page.dart';
 import 'package:thesonsofmosiah/page_components/projects_page.dart';
 import 'package:thesonsofmosiah/page_components/books_page.dart';
 import 'package:thesonsofmosiah/model/site.dart';
-import 'package:animation/animation.dart';
+import 'package:thesonsofmosiah/model/sections.dart';
 
 @Component(
     selector: 'my-app',
@@ -30,41 +30,86 @@ class AppComponent {
   String logo = "";
   bool hideLogo = false;
   bool dataLoaded = false;
+  Sections sectionData;
+  SiteService site = new SiteService();
 
-  AppComponent(SiteService site) {
+  //for scrolling
+  static const num SCROLL_SPEED = 5;
+  int currentLoc;
+
+  AppComponent() {
     site.getSite(siteToLoad).then(siteDataLoaded);
   }
 
   void siteDataLoaded(data) {
     siteData = data;
+    sectionData = site.getSection(siteData.sections);
     background = "url(\"$pathToImages${siteData.backgroundUrl}\")";
     if (siteData.logo == null || siteData.logo == "") {
       hideLogo = true;
     }
-    print(hideLogo);
     logo = "$pathToImages${siteData.logo}";
-    print(siteData.contactInfo["name"]);
     document.title = siteData.siteTitle;
     dataLoaded = true;
   }
 
-  void scrollTest(data) {
-    var elLoc = querySelector('#' + data).offsetTop;
+  void handleScroll(data) {
+    if (data == "fp") {
+      swapSite("fp");
+      return;
+    }
+    currentLoc = window.pageYOffset;
+    int destinationLoc = querySelector('#$data').offsetTop;
+    int totalScroll;
+    double scrollIteration;
+    String direction;
+    if(currentLoc > destinationLoc) {
+      direction = "up";
+      totalScroll = currentLoc - destinationLoc;
+    }
+    if(currentLoc < destinationLoc) {
+      direction = "down";
+      totalScroll = destinationLoc - currentLoc;
+    }
+    scrollIteration = totalScroll/SCROLL_SPEED;
+    setCurrentScrollLocation(direction, destinationLoc, scrollIteration);
+  }
 
-    //animation to figure out later
-    /*var el = querySelector('#' + data);
-    var properties = {
-      'left': 1000,
-      'top': 350
-    };
-    animate(el, properties: properties, duration: 5000);*/
+  setCurrentScrollLocation(direction, destinationLoc, scrollIteration) async {
+    await window.animationFrame;
+    scroll(direction, scrollIteration);
+    if (direction == "down") {
+      if (currentLoc <= destinationLoc) {
+        setCurrentScrollLocation(direction, destinationLoc, scrollIteration);
+      } else {
+        scrollHard(destinationLoc);
+      }
+    }
+    if (direction == "up") {
+      if (currentLoc >= destinationLoc) {
+        setCurrentScrollLocation(direction, destinationLoc, scrollIteration);
+      } else {
+        scrollHard(destinationLoc);
+      }
+    }
+  }
 
-    window.scrollTo(0, elLoc);
+  scrollHard(destinationLoc) {
+    window.scrollTo(0, destinationLoc);
+  }
+
+  void scroll(direction, scrollIteration) {
+    if (direction == "down") {
+      currentLoc += scrollIteration;
+    }
+    if (direction == "up") {
+      currentLoc -= scrollIteration;
+    }
+    print(currentLoc);
+    window.scrollTo(0, currentLoc);
   }
 
   swapSite(siteToGet) {
-    SiteService site = new SiteService();
     site.getSite(siteToGet).then(siteDataLoaded);
   }
-
 }

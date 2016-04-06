@@ -23,12 +23,13 @@ class Site {
   Site.fromMap(Map<String, Object> map) : this(
       map["siteTitle"],
       map["backgroundUrl"],
-      map["log"],
+      map["logo"],
       map["menuColor"],
       map["aboutText"],
       map["contactInfo"],
       map["people"],
       map["sections"]);
 
-  @override String toString() => "$siteTitle";
+  @override String toString() => "$logo";
+
 }

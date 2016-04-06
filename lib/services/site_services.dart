@@ -1,5 +1,6 @@
 import 'package:angular2/angular2.dart';
 import 'package:thesonsofmosiah/model/site.dart';
+import 'package:thesonsofmosiah/model/sections.dart';
 import 'dart:html';
 import 'dart:convert';
 import 'dart:async';
@@ -15,5 +16,9 @@ class SiteService {
       return new Site.fromMap(decoded);
     });
     return siteData;
+  }
+
+  Sections getSection(Map sections) {
+    return new Sections.fromMap(sections);
   }
 }

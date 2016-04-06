@@ -16,6 +16,7 @@
     {"name":"Bryony Danae Nielson", "role":"Demo Singer"}
   ],
   "sections": {
+    "fp": true,
     "about": true,
     "projects": false,
     "books": false,
