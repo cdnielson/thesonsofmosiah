@@ -3,6 +3,8 @@
   "backgroundUrl":"fp/background.jpg",
   "logo":"fp/folkprophet.png",
   "menuColor":"black",
+  "backgroundColor1":"white",
+  "backgroundColor2":"#e9e6e2",
   "aboutText":"Folk Prophet LLC is a company with three primary divisions. Musical Theater development, book publishing, and web development.",
   "contactInfo": {
     "name": "Folk Prophet L.L.C.",

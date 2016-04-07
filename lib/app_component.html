@@ -15,13 +15,13 @@
         <img [hidden]="hideLogo" [src]="logo" id="logo"/>
     </div>
     <about-page *ngIf="sectionData.about" [siteData]="siteData"></about-page>
-    <projects-page *ngIf="sectionData.projects" (newPage)="swapSite($event)"></projects-page>
-    <books-page *ngIf="sectionData.books"></books-page>
+    <projects-page *ngIf="sectionData.projects" (newPage)="swapSite($event)" [siteData]="siteData"></projects-page>
+    <books-page *ngIf="sectionData.books" [siteData]="siteData"></books-page>
     <listen-page *ngIf="sectionData.listen" [siteData]="siteData"></listen-page>
     <people-page *ngIf="sectionData.people" [siteData]="siteData"></people-page>
     <contact-page *ngIf="sectionData.contact" [siteData]="siteData"></contact-page>
 
-    <div id="blank_footer" class="spacing gray"></div>
+    <div id="blank_footer" class="spacing" [ngStyle]="{'background-color':siteData.backgroundColor2}"></div>
     <div class="bottom-menu">
         <menu-bar [menuClass]="'horizontal layout around-justified flex wrap'"
                   [siteData]="siteData"

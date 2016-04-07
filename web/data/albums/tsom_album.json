@@ -1,0 +1,107 @@
+{ "title" : "The Sons of Mosiah",
+  "artist" : "Charles Dail Nielson",
+  "songs" :
+  [
+    {
+      "name": "Cursed/The Sons of Mosiah",
+      "url": "cursed.mp3"
+    },
+    {
+      "name": "Take Courage and Go Forth",
+      "url": "take_courage_and_go_forth.mp3"
+    },
+    {
+      "name": "Wronged/Journey Through the Land",
+      "url": "wronged.mp3"
+    },
+    {
+      "name": "The Custom",
+      "url": "the_custom.mp3"
+    },
+    {
+      "name": "I Had a Vision",
+      "url": "the_vision.mp3"
+    },
+    {
+      "name": "Weary World",
+      "url": "weary_world.mp3"
+    },
+    {
+      "name": "Kneel Before Your King",
+      "url": "kneel_before_your_king.mp3"
+    },
+    {
+      "name": "'Til the Day I Die",
+      "url": "til_the_day_i_die.mp3"
+    },
+    {
+      "name": "What Will Be Tonight",
+      "url": "what_will_be_tonight.mp3"
+    },
+    {
+      "name": "Could You Love Me Too",
+      "url": "could_you_love_me_too.mp3"
+    },
+    {
+      "name": "The Sun",
+      "url": "the_sun.mp3"
+    },
+    {
+      "name": "Amazing",
+      "url": "amazing.mp3"
+    },
+    {
+      "name": "The Great Spirit",
+      "url": "the_great_spirit.mp3"
+    },
+    {
+      "name": "Behold, This Is God",
+      "url": "behold_this_is_God.mp3"
+    },
+    {
+      "name": "Yea, I Believe",
+      "url": "yea_i_believe.mp3"
+    },
+    {
+      "name": "To Me He Doth Not Stink",
+      "url": "to_me_he_doth_not_stink.mp3"
+    },
+    {
+      "name": "Blessed Be the Name of God/Yea, I Believe (reprise)",
+      "url": "queen_dialog.mp3"
+    },
+    {
+      "name": "Somewhere Beyond This Slumber",
+      "url": "somewhere_beyond_this_slumber.mp3"
+    },
+    {
+      "name": "Strange",
+      "url": "something_strange.mp3"
+    },
+    {
+      "name": "Monster",
+      "url": "monster.mp3"
+    },
+    {
+      "name": "The Fountain of His Love",
+      "url": "from_the_fountain_of_his_love.mp3"
+    },
+    {
+      "name": "Crazy Stuff Happ'nin'",
+      "url": "gal.mp3"
+    },
+    {
+      "name": "Lost Again",
+      "url": "lost_again.mp3"
+    },
+    {
+      "name": "Watch",
+      "url": "watch.mp3"
+    },
+
+    {
+      "name": "The Love We Share",
+      "url": "the_love_we_share.mp3"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "siteTitle":"Living Dead Musical",
+  "backgroundUrl":"ld/background.jpg",
+  "logo":"",
+  "menuColor":"white",
+  "backgroundColor1":"black",
+  "backgroundColor2":"darkgray",
+  "aboutText":"Living Dead Musical about info",
+  "contactInfo": {
+    "name": "Folk Prophet L.L.C.",
+    "streetAddress": "3536 South Hawk Drive",
+    "cityStateZip": "Saratoga Springs, Utah, 84045",
+    "phone": "801-885-6258",
+    "email": "cdnielson@folkprophet.com"
+  },
+  "people": [
+    {"name":"Charles Dail Nielson", "role":"Composer, Librettist, Lyricist, Orchestrator, Demo Singer"},
+    {"name":"Bryony Danae Nielson", "role":"Demo Singer"}
+  ],
+  "sections": {
+    "fp": true,
+    "about": true,
+    "projects": false,
+    "books": false,
+    "people": true,
+    "listen": true,
+    "contact": true
+  },
+  "album":"ld_album.json"
+}

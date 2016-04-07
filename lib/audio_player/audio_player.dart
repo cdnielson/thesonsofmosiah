@@ -1,5 +1,6 @@
 import 'package:angular2/angular2.dart';
 import 'model/album.dart';
+import 'package:thesonsofmosiah/model/site.dart';
 import 'dart:html';
 import 'dart:async';
 import 'package:thesonsofmosiah/audio_player/services/songs_services.dart';
@@ -11,14 +12,15 @@ import 'package:thesonsofmosiah/audio_player/pipes/format_seconds.dart';
     providers: const [SongsServices],
     pipes: const [FormatSeconds])
 
-class AudioPlayer {
+class AudioPlayer implements OnInit {
   @ViewChild("player") var player;
   @ViewChild("timeline") var timeline;
   @ViewChild("playhead") var playhead;
+  @Input("siteData") Site siteData;
 
   String title = "Audio Player";
 
-  String get pathToSongs => "data/album.json";
+  //String get pathToSongs => "data/albums/";
   String get pathToAudio => "audio/";
   List<Album> songList;
   int currentSongId = 0;
@@ -49,13 +51,16 @@ class AudioPlayer {
   String playerHeight = "350px";
   String playerOverflow = "scroll";
   String playHeadPosition = "0px";
+  SongsServices songsService = new SongsServices();
 
-  AudioPlayer(SongsServices songsService) {
-    songsService.getSongs().then(songsLoaded).then((_){
+  ngOnInit() {
+    songsService.getSongs(siteData.album).then(songsLoaded).then((_){
       title = songsService.getAlbumTitle();
       artist = songsService.getAlbumArtist();
     });
+  }
 
+  AudioPlayer() {
     window.document.onMouseUp.listen((_) {
       if(isMouseDown) {
         isMouseDown = false;

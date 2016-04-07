@@ -6,11 +6,11 @@ import 'package:thesonsofmosiah/audio_player/model/album.dart';
 
 @Injectable()
 class SongsServices {
-  String get pathToSongs => "data/album.json";
+  String get pathToSongs => "data/albums/";
   Map decoded;
 
-  Future getSongs() {
-    return HttpRequest.getString(pathToSongs).then((data) {
+  Future getSongs(album) {
+    return HttpRequest.getString('$pathToSongs$album').then((data) {
       decoded = JSON.decode(data);
       return decoded["songs"].map((Map element) => new Album.fromMap(element)).toList();
     });

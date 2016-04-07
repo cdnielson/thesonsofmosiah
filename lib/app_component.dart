@@ -105,7 +105,6 @@ class AppComponent {
     if (direction == "up") {
       currentLoc -= scrollIteration;
     }
-    print(currentLoc);
     window.scrollTo(0, currentLoc);
   }
 

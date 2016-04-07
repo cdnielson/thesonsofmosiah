@@ -1,4 +1,4 @@
-<div id="projects" class="spacing white">
+<div id="projects" class="spacing" [ngStyle]="{'background-color':siteData.backgroundColor1}">
     <h2 class="text-center">PROJECTS</h2>
     <div class="container">
         <div class="row">
@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-4 piclinkspacing"><a href="http://www.folkprophet.com/other"><img class="image" src="images/fp/ldshymns.jpg"/></a></div>
             <div class="col-md-4 piclinkspacing"><a href="http://www.folkprophet.com/other"><img class="image" src="images/fp/other_projects.jpg"/></a></div>
-            <div class="col-md-4 piclinkspacing"><a href="http://www.folkprophet.com/livingdead"><img class="image" src="images/fp/livingdead.jpg"/></a></div>
+            <div class="col-md-4 piclinkspacing"><a href="#" (click)="changePage('ld')"><img class="image" src="images/fp/livingdead.jpg"/></a></div>
 
         </div>
         <div class="row">
