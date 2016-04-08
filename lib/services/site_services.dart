@@ -7,16 +7,28 @@ import 'dart:async';
 
 @Injectable()
 class SiteService {
-  String get pathToData => "data/";
+  static const String PATH_TO_DATA = "data/";
+  Sections _sectionData;
+  Site _siteData;
+
+  Site get siteData {
+    return _siteData;
+  }
+
+  Sections get sectionData {
+    return _sectionData;
+  }
 
   Future getSite(site) {
-    String pathToSiteData = "$pathToData${site}_sitedata.json";
-    Future siteData = HttpRequest.getString(pathToSiteData).then((data) {
+    String pathToSiteData = "$PATH_TO_DATA${site}_sitedata.json";
+    return HttpRequest.getString(pathToSiteData).then((data) {
       Map decoded = JSON.decode(data);
-      return new Site.fromMap(decoded);
+      _siteData = new Site.fromMap(decoded);
+      return _siteData;
+    }).then((_){
+      _sectionData = getSection(_siteData.sections);
     });
-    return siteData;
-  }
+ }
 
   Sections getSection(Map sections) {
     return new Sections.fromMap(sections);

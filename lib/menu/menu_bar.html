@@ -2,11 +2,11 @@
     style="list-style: none; padding: 0; margin: 0;"
     [ngClass]="menuClass">
     <li *ngIf="showHome" (click)="handleClicked('home')" class="h4 topMenu">HOME</li>
-    <li *ngIf="siteData?.sections['fp']" (click)="handleClicked('fp')" class="h4 topMenu">FOLK PROPHET</li>
-    <li *ngIf="siteData?.sections['about']" (click)="handleClicked('about')" class="h4 topMenu">ABOUT</li>
-    <li *ngIf="siteData?.sections['listen']" (click)="handleClicked('listen')" class="h4 topMenu">LISTEN</li>
-    <li *ngIf="siteData?.sections['projects']" (click)="handleClicked('projects')" class="h4 topMenu">PROJECTS</li>
-    <li *ngIf="siteData?.sections['books']" (click)="handleClicked('books')" class="h4 topMenu">BOOKS</li>
-    <li *ngIf="siteData?.sections['people']" (click)="handleClicked('people')" class="h4 topMenu">PEOPLE</li>
-    <li *ngIf="siteData?.sections['contact']" (click)="handleClicked('contact')" class="h4 topMenu">CONTACT</li>
+    <li *ngIf="siteService?.sectionData.fp" (click)="handleClicked('fp')" class="h4 topMenu">FOLK PROPHET</li>
+    <li *ngIf="siteService?.sectionData.about" (click)="handleClicked('about')" class="h4 topMenu">ABOUT</li>
+    <li *ngIf="siteService?.sectionData.listen" (click)="handleClicked('listen')" class="h4 topMenu">LISTEN</li>
+    <li *ngIf="siteService?.sectionData.projects" (click)="handleClicked('projects')" class="h4 topMenu">PROJECTS</li>
+    <li *ngIf="siteService?.sectionData.books" (click)="handleClicked('books')" class="h4 topMenu">BOOKS</li>
+    <li *ngIf="siteService?.sectionData.people" (click)="handleClicked('people')" class="h4 topMenu">PEOPLE</li>
+    <li *ngIf="siteService?.sectionData.contact" (click)="handleClicked('contact')" class="h4 topMenu">CONTACT</li>
 </ul>

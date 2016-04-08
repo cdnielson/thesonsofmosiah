@@ -20,35 +20,39 @@ import 'package:thesonsofmosiah/model/sections.dart';
 @Component(
     selector: 'my-app',
     templateUrl: 'app_component.html',
-    directives: const [MenuBar, AboutPage, PeoplePage, ProjectsPage, ContactPage, ListenPage, BooksPage])
+    directives: const [MenuBar, AboutPage, PeoplePage, ProjectsPage, ContactPage, ListenPage, BooksPage],
+    providers: const [SiteService])
 class AppComponent {
 
   String siteToLoad = "fp";
-  String get pathToImages => "images/";
+  static const PATH_TO_IMAGES = "images/";
   Site siteData;
+  Sections sectionData;
   String background = "";
   String logo = "";
   bool hideLogo = false;
   bool dataLoaded = false;
-  Sections sectionData;
-  SiteService site = new SiteService();
+  SiteService site;
 
   //for scrolling
   static const num SCROLL_SPEED = 5;
   int currentLoc;
 
-  AppComponent() {
-    site.getSite(siteToLoad).then(siteDataLoaded);
+  AppComponent(SiteService siteService) {
+    siteService.getSite(siteToLoad).then((_) {
+      site = siteService;
+      siteDataLoaded();
+    });
   }
 
-  void siteDataLoaded(data) {
-    siteData = data;
-    sectionData = site.getSection(siteData.sections);
-    background = "url(\"$pathToImages${siteData.backgroundUrl}\")";
+  void siteDataLoaded() {
+    siteData = site.siteData;
+    sectionData = site.sectionData;
+    background = "url(\"$PATH_TO_IMAGES${siteData.backgroundUrl}\")";
     if (siteData.logo == null || siteData.logo == "") {
       hideLogo = true;
     }
-    logo = "$pathToImages${siteData.logo}";
+    logo = "$PATH_TO_IMAGES${siteData.logo}";
     document.title = siteData.siteTitle;
     dataLoaded = true;
   }
@@ -109,6 +113,8 @@ class AppComponent {
   }
 
   swapSite(siteToGet) {
-    site.getSite(siteToGet).then(siteDataLoaded);
+    site.getSite(siteToGet).then((_) {
+      siteDataLoaded();
+    });
   }
 }

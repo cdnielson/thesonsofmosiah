@@ -1,7 +1,7 @@
-<div id="people" class="spacing" [ngStyle]="{'background-color':siteData.backgroundColor2}">
+<div id="people" class="spacing" [ngStyle]="{'background-color':siteService.siteData.backgroundColor2}">
 
     <h2 class="text-center">PEOPLE</h2>
-    <div *ngFor="#data of siteData?.people">
+    <div *ngFor="#data of siteService.siteData?.people">
         <p class="text-center">{{ data['name'] }} - {{ data['role'] }}</p>
     </div>
 

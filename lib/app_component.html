@@ -2,29 +2,26 @@
     <div class="container" id="home" [ngStyle]="{'background-image': background}">
         <menu-bar class="topMenuBar"
                   [menuClass]="'horizontal layout end-justified'"
-                  [siteData]="siteData"
                   (clicked)="handleScroll($event)"
                   [showHome]="false">
         </menu-bar>
         <menu-bar class="topMenuBar2"
                   [menuClass]="'vertical layout end-justified'"
-                  [siteData]="siteData"
                   (clicked)="handleScroll($event)"
                   [showHome]="false">
         </menu-bar>
         <img [hidden]="hideLogo" [src]="logo" id="logo"/>
     </div>
-    <about-page *ngIf="sectionData.about" [siteData]="siteData"></about-page>
-    <projects-page *ngIf="sectionData.projects" (newPage)="swapSite($event)" [siteData]="siteData"></projects-page>
-    <books-page *ngIf="sectionData.books" [siteData]="siteData"></books-page>
-    <listen-page *ngIf="sectionData.listen" [siteData]="siteData"></listen-page>
-    <people-page *ngIf="sectionData.people" [siteData]="siteData"></people-page>
-    <contact-page *ngIf="sectionData.contact" [siteData]="siteData"></contact-page>
+    <about-page *ngIf="sectionData.about"></about-page>
+    <projects-page *ngIf="sectionData.projects" (newPage)="swapSite($event)"></projects-page>
+    <books-page *ngIf="sectionData.books"></books-page>
+    <listen-page *ngIf="sectionData.listen"></listen-page>
+    <people-page *ngIf="sectionData.people"></people-page>
+    <contact-page *ngIf="sectionData.contact"></contact-page>
 
     <div id="blank_footer" class="spacing" [ngStyle]="{'background-color':siteData.backgroundColor2}"></div>
     <div class="bottom-menu">
         <menu-bar [menuClass]="'horizontal layout around-justified flex wrap'"
-                  [siteData]="siteData"
                   (clicked)="handleScroll($event)"
                   [showHome]="true"
                   style="width: 100%;">

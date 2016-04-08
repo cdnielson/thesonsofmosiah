@@ -1,8 +1,8 @@
-<div id="contact" class="spacing" [ngStyle]="{'background-color':siteData.backgroundColor1}">
+<div id="contact" class="spacing" [ngStyle]="{'background-color':siteService.siteData.backgroundColor1}">
     <h2 class="text-center">CONTACT</h2>
-    <p class="text-center">{{ siteData?.contactInfo['name'] }}
-        <br>{{ siteData?.contactInfo['streetAddress'] }}
-        <br>{{ siteData?.contactInfo['cityStateZip'] }}
-        <br><a href="{{ siteData?.contactInfo['email'] }}">{{ siteData?.contactInfo['email'] }}</a>
+    <p class="text-center">{{ siteService.siteData?.contactInfo['name'] }}
+        <br>{{ siteService.siteData?.contactInfo['streetAddress'] }}
+        <br>{{ siteService.siteData?.contactInfo['cityStateZip'] }}
+        <br><a href="mailto:{{ siteService.siteData?.contactInfo['email'] }}">{{ siteService.siteData?.contactInfo['email'] }}</a>
     </p>
 </div>

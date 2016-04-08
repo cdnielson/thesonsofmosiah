@@ -1,4 +1,4 @@
-<div class="spacing" [ngStyle]="{'background-color':siteData.backgroundColor1}">
+<div class="spacing" [ngStyle]="{'background-color':siteService.siteData.backgroundColor1}">
     <h2 class="text-center">LISTEN</h2>
-    <audio-player id="listen" [siteData]="siteData"></audio-player>
+    <audio-player id="listen" [siteData]="siteService.siteData"></audio-player>
 </div>

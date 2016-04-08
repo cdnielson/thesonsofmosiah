@@ -7,5 +7,5 @@ import 'package:thesonsofmosiah/app_component.dart';
 import 'package:thesonsofmosiah/services/site_services.dart';
 
 main() {
-  bootstrap(AppComponent, [SiteService]);
+  bootstrap(AppComponent);
 }
