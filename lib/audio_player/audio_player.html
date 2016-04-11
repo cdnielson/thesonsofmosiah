@@ -40,6 +40,12 @@
         justify-content: center;
         align-items: center;
     }
+    .loading {
+        position: static;
+        top: 45%;
+        width: 100%;
+        z-index: 200000;
+    }
 </style>
 
 <h1 class="text-center">{{ title }}</h1>
@@ -56,7 +62,11 @@
         </table>
     </div>
 
-    <div class="text-center">{{ currentSongId + 1 }} - {{ currentSong.name }}</div>
+    <div class="loading layout horizontal center-justified no-wrap" [hidden]="hideSpinner">
+        <img [src]="pathToSpinner" style="width: 30px; height:30px; margin-top:15px;"/>
+        <h3>LOADING...</h3>
+    </div>
+    <div class="text-center" [hidden]="!hideSpinner"><h3>{{ currentSongId + 1 }} - {{ currentSong.name }}</h3></div>
     <div class="text-center">
         <button (click)="changeSong('prev')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
 
@@ -82,7 +92,7 @@
         <div class="time" draggable="false">{{ minutes }}:{{ seconds | formatseconds }}</div>
     </div>
 </div>
-<audio #player (ended)="changeSong('next')" (timeupdate)="timeUpdate()" (canplaythrough)="setDuration()">
+<audio #player (ended)="changeSong('next')" (timeupdate)="timeUpdate()" (canplaythrough)="setDuration()" preload (canplay)="stopSpinner()">
     <source [src]="currentSongPath" type="audio/ogg">
     <source [src]="currentSongPath" type="audio/mpeg">
 </audio>

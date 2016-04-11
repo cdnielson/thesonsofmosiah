@@ -3,12 +3,14 @@
         <menu-bar class="topMenuBar"
                   [menuClass]="'horizontal layout end-justified'"
                   (clicked)="handleScroll($event)"
-                  [showHome]="false">
+                  [showHome]="false"
+                  [fpImageIsBlack]="true">
         </menu-bar>
         <menu-bar class="topMenuBar2"
-                  [menuClass]="'vertical layout end-justified'"
+                  [menuClass]="'vertical layout end'"
                   (clicked)="handleScroll($event)"
-                  [showHome]="false">
+                  [showHome]="false"
+                  [fpImageIsBlack]="true">
         </menu-bar>
         <img [hidden]="hideLogo" [src]="logo" id="logo"/>
     </div>
@@ -20,11 +22,18 @@
     <contact-page *ngIf="sectionData.contact"></contact-page>
 
     <div id="blank_footer" class="spacing" [ngStyle]="{'background-color':siteData.backgroundColor2}"></div>
-    <div class="bottom-menu">
-        <menu-bar [menuClass]="'horizontal layout around-justified flex wrap'"
+    <div class="bottom-menu" (click)="showHideMenu()">
+        <div [hidden]="hideMenuButton" class="center-block">
+            <div class="hamburger"></div>
+            <div class="hamburger"></div>
+            <div class="hamburger"></div>
+        </div>
+        <menu-bar [menuClass]="'vertical layout center'"
                   (clicked)="handleScroll($event)"
                   [showHome]="true"
-                  style="width: 100%;">
+                  style="width: 100%;"
+                  [hidden]="!hideMenuButton"
+                  [fpImageIsBlack]="false">
         </menu-bar>
     </div>
 </div>

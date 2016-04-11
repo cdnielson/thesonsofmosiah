@@ -8,8 +8,11 @@ import 'package:thesonsofmosiah/services/site_services.dart';
 class MenuBar {
   @Input("menuClass") String menuClass;
   @Input("showHome") bool showHome;
+  @Input("fpImageIsBlack") bool fpImageIsBlack;
   @Output() EventEmitter clicked = new EventEmitter();
   final SiteService siteService;
+  String get fpImageWhite => "images/fp/prophet_white.svg";
+  String get fpImageBlack => "images/fp/prophet.svg";
 
   MenuBar(SiteService this.siteService);
 

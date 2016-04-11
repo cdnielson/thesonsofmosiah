@@ -32,10 +32,11 @@ class AppComponent {
   String logo = "";
   bool hideLogo = false;
   bool dataLoaded = false;
+  bool hideMenuButton = false;
   SiteService site;
 
   //for scrolling
-  static const num SCROLL_SPEED = 5;
+  static const num SCROLL_SPEED = 10;
   int currentLoc;
 
   AppComponent(SiteService siteService) {
@@ -116,5 +117,9 @@ class AppComponent {
     site.getSite(siteToGet).then((_) {
       siteDataLoaded();
     });
+  }
+
+  showHideMenu() {
+    hideMenuButton = !hideMenuButton;
   }
 }

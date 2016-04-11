@@ -22,6 +22,7 @@ class AudioPlayer implements OnInit {
 
   //String get pathToSongs => "data/albums/";
   String get pathToAudio => "audio/";
+  String get pathToSpinner => "images/spinner.gif";
   List<Album> songList;
   int currentSongId = 0;
   Album currentSong = new Album.fromMap({});
@@ -52,6 +53,7 @@ class AudioPlayer implements OnInit {
   String playerOverflow = "scroll";
   String playHeadPosition = "0px";
   SongsServices songsService = new SongsServices();
+  bool hideSpinner = true;
 
   ngOnInit() {
     songsService.getSongs(siteData.album).then(songsLoaded).then((_){
@@ -157,6 +159,7 @@ class AudioPlayer implements OnInit {
 
   void loadSong() {
     player.nativeElement.load();
+    hideSpinner = false;
     print(player.nativeElement.currentSrc);
     if (playing) {
       play();
@@ -224,6 +227,14 @@ class AudioPlayer implements OnInit {
       sub.cancel();
       playHeadPosition = timeLineWidth + "px";
     }
+  }
+
+  startSpinner() {
+    hideSpinner = false;
+  }
+
+  stopSpinner() {
+    hideSpinner = true;
   }
 
 }
