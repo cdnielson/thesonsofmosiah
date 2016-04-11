@@ -13,7 +13,7 @@ import 'package:thesonsofmosiah/audio_player/pipes/format_seconds.dart';
     pipes: const [FormatSeconds])
 
 class AudioPlayer implements OnInit {
-  @ViewChild("player") var player;
+//  @ViewChild("player") var player;
   @ViewChild("timeline") var timeline;
   @ViewChild("playhead") var playhead;
   @Input("siteData") Site siteData;
@@ -55,7 +55,6 @@ class AudioPlayer implements OnInit {
   SongsServices songsService = new SongsServices();
   bool hideSpinner = true;
   List playerList = [];
-  int currentSongID = 0;
   AudioElement audioElement;
 
   ngOnInit() {
@@ -110,7 +109,11 @@ class AudioPlayer implements OnInit {
   }
 
   void changeSong(String direction) {
-    print("Leaving song: $currentSongId");
+    for(var p in playerList) {
+      AudioElement el = querySelector('#player$p');
+      el.pause();
+      el.currentTime = 0;
+    }
     if (direction == "next") {
       if (currentSongId < songList.length - 1) {
         currentSongId ++;
@@ -125,7 +128,6 @@ class AudioPlayer implements OnInit {
         currentSongId --;
       }
     }
-    print("Entering song: $currentSongId");
 
     setSongToPlay();
   }
@@ -134,8 +136,7 @@ class AudioPlayer implements OnInit {
     currentSong.selected = false;
     currentSong = songList[currentSongId];
     currentSong.selected = true;
-    print(currentSong.url);
-    currentSongPath = "$pathToAudio${currentSong.url}";
+    audioElement = querySelector('#player$currentSongId');
     Timer.run(loadSong);
   }
 
@@ -152,13 +153,14 @@ class AudioPlayer implements OnInit {
   }
 
   void stop() {
-    audioElement.load();
+    audioElement.pause();
+    audioElement.currentTime = 0;
     playing = false;
     playPause = false;
   }
 
   void loadSong() {
-    audioElement = querySelector('#player$currentSongID');
+
 //    audioElement.load();
     //hideSpinner = false;
     if (playing) {
