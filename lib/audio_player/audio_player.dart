@@ -54,6 +54,9 @@ class AudioPlayer implements OnInit {
   String playHeadPosition = "0px";
   SongsServices songsService = new SongsServices();
   bool hideSpinner = true;
+  List playerList = [];
+  int currentSongID = 0;
+  AudioElement audioElement;
 
   ngOnInit() {
     songsService.getSongs(siteData.album).then(songsLoaded).then((_){
@@ -72,17 +75,14 @@ class AudioPlayer implements OnInit {
   }
 
   void songsLoaded(List<Album> data) {
-    print("go test go ninja");
     songList = data;
-    print(songList);
+    for (var i = 0; i < songList.length; i++) {
+      playerList.add("player$i");
+    }
     currentSong = songList[0];
-    currentSongPath = "$pathToAudio${currentSong.url}";
+//    currentSongPath = "$pathToAudio${currentSong.url}";
     currentSong.selected = true;
     Timer.run(loadSong);
-  }
-
-  ngAfterViewInit() {
-    // viewChild is set
   }
 
   void timeUpdate() {
@@ -95,10 +95,10 @@ class AudioPlayer implements OnInit {
     num percent = 100 * (timeLineWidth / timeLine.offsetWidth);
 
     num playPercent = percent *
-        (player.nativeElement.currentTime / songDuration);
+        (audioElement.currentTime / songDuration);
 
     playHead.style.marginLeft = playPercent.toString() + "%";
-    currentTime = player.nativeElement.currentTime;
+    currentTime = audioElement.currentTime;
     calcTimeForDisplay();
   }
 
@@ -141,33 +141,33 @@ class AudioPlayer implements OnInit {
 
   void play() {
     playPause = !playPause;
-    print(player.nativeElement.paused);
-    if (player.nativeElement.paused) {
-      player.nativeElement.play();
+//    print(player.nativeElement.paused);
+    if (audioElement.paused) {
+      audioElement.play();
     } else {
-      player.nativeElement.pause();
+      audioElement.pause();
     }
     playing = true;
 //    timeUpdate();
   }
 
   void stop() {
-    player.nativeElement.load();
+    audioElement.load();
     playing = false;
     playPause = false;
   }
 
   void loadSong() {
-    player.nativeElement.load();
-    hideSpinner = false;
-    print(player.nativeElement.currentSrc);
+    audioElement = querySelector('#player$currentSongID');
+//    audioElement.load();
+    //hideSpinner = false;
     if (playing) {
       play();
     }
   }
 
   void setDuration() {
-    songDuration = player.nativeElement.duration;
+    songDuration = audioElement.duration;
 
     //comment out for production
     if (songDuration.isInfinite) {
@@ -201,10 +201,8 @@ class AudioPlayer implements OnInit {
   }
 
   void handleMouseMoveOrClick(MouseEvent event) {
-
-
     movePlayHead(event);
-    player.nativeElement.currentTime = songDuration * clickPercent(event);
+    audioElement.currentTime = songDuration * clickPercent(event);
   }
 
 // returns click as decimal (.77) of the total timelineWidth
