@@ -35,7 +35,7 @@ class AudioPlayer implements OnInit {
   AudioElement myPlayer;
 //  DivElement myTimeline;
   String currentSongPath = "";
-  bool playPause = false;
+  String playPause = "glyphicon glyphicon-play";
   var timeLineWidth;
   var currentTime = 0;
   StreamSubscription sub;
@@ -109,11 +109,6 @@ class AudioPlayer implements OnInit {
   }
 
   void changeSong(String direction) {
-    for(var p in playerList) {
-      AudioElement el = querySelector('#player$p');
-      el.pause();
-      el.currentTime = 0;
-    }
     if (direction == "next") {
       if (currentSongId < songList.length - 1) {
         currentSongId ++;
@@ -141,7 +136,6 @@ class AudioPlayer implements OnInit {
   }
 
   void play() {
-    playPause = !playPause;
 //    print(player.nativeElement.paused);
     if (audioElement.paused) {
       audioElement.play();
@@ -153,18 +147,23 @@ class AudioPlayer implements OnInit {
   }
 
   void stop() {
-    audioElement.pause();
-    audioElement.currentTime = 0;
     playing = false;
-    playPause = false;
+    loadSong();
   }
 
   void loadSong() {
-
+    for(var i = 0; i < playerList.length; i++) {
+      AudioElement el = querySelector('#player$p');
+      el.pause();
+      el.currentTime = 0;
+    }
 //    audioElement.load();
     //hideSpinner = false;
     if (playing) {
+      playPause = "glyphicon glyphicon-pause";
       play();
+    } else {
+      playPause = "glyphicon glyphicon-play";
     }
   }
 
@@ -194,7 +193,6 @@ class AudioPlayer implements OnInit {
     sub = timeline.nativeElement.onMouseMove.listen(handleMouseMoveOrClick);
     print("mouseDowned");
     //sub2 = window.document.onMouseUp.listen((_) => handleMouseUp());
-
   }
 
   handleMouseUp() {
@@ -207,7 +205,6 @@ class AudioPlayer implements OnInit {
     audioElement.currentTime = songDuration * clickPercent(event);
   }
 
-// returns click as decimal (.77) of the total timelineWidth
   double clickPercent(MouseEvent e) {
     return (e.page.x - timeline.nativeElement.offsetLeft) / timeLineWidth;
   }

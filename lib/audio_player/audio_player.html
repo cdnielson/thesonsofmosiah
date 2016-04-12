@@ -69,13 +69,7 @@
     <div class="text-center" [hidden]="!hideSpinner"><h3>{{ currentSongId + 1 }} - {{ currentSong.name }}</h3></div>
     <div class="text-center">
         <button (click)="changeSong('prev')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
-
-            <button (click)="play()" class="btn btn-default btn-lg">
-                <div [hidden]="playPause"><span aria-hidden="true" class="glyphicon glyphicon-play"></span></div>
-                <div [hidden]="!playPause"><span aria-hidden="true" class="glyphicon glyphicon-pause"></span></div>
-            </button>
-
-
+        <button (click)="play()" class="btn btn-default btn-lg"><span aria-hidden="true" [ngClass]="playPause"></span></button>
         <button (click)="stop()" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
         <button (click)="changeSong('next')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
 
@@ -93,7 +87,7 @@
     </div>
 </div>
 <div *ngFor="#song of songList; #i = index">
-    <audio id="player{{i}}" (ended)="changeSong('next')" (timeupdate)="timeUpdate()" (canplaythrough)="setDuration()" preload (canplay)="stopSpinner()">
+    <audio id="player{{i}}" (ended)="changeSong('next')" (timeupdate)="timeUpdate()" preload>
         <source [src]="currentSongPath" type="audio/ogg">
         <source [src]="currentSongPath" type="audio/mpeg">
     </audio>
