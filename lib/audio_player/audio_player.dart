@@ -35,7 +35,7 @@ class AudioPlayer implements OnInit {
   AudioElement myPlayer;
 //  DivElement myTimeline;
   String currentSongPath = "";
-  bool playPause = false;
+  String playPause = "glyphicon glyphicon-play";
   var timeLineWidth;
   var currentTime = 0;
   StreamSubscription sub;
@@ -140,21 +140,23 @@ class AudioPlayer implements OnInit {
   }
 
   void play() {
-    playPause = !playPause;
     print(player.nativeElement.paused);
     if (player.nativeElement.paused) {
       player.nativeElement.play();
+      playing = true;
     } else {
       player.nativeElement.pause();
+      playing = false;
     }
-    playing = true;
+
 //    timeUpdate();
+    setPlayButtonState();
   }
 
   void stop() {
     player.nativeElement.load();
     playing = false;
-    playPause = false;
+    playPause = "glyphicon glyphicon-play";
   }
 
   void loadSong() {
@@ -163,6 +165,15 @@ class AudioPlayer implements OnInit {
     print(player.nativeElement.currentSrc);
     if (playing) {
       play();
+    }
+    setPlayButtonState();
+  }
+
+  void setPlayButtonState() {
+    if (playing) {
+      playPause = "glyphicon glyphicon-pause";
+    } else {
+      playPause = "glyphicon glyphicon-play";
     }
   }
 
