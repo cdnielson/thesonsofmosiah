@@ -13,7 +13,6 @@ import 'package:thesonsofmosiah/audio_player/pipes/format_seconds.dart';
     pipes: const [FormatSeconds])
 
 class AudioPlayer implements OnInit {
-//  @ViewChild("player") var player;
   @ViewChild("timeline") var timeline;
   @ViewChild("playhead") var playhead;
   @Input("siteData") Site siteData;
@@ -21,7 +20,7 @@ class AudioPlayer implements OnInit {
   String title = "Audio Player";
 
   //String get pathToSongs => "data/albums/";
-  String get pathToAudio => "audio/";
+  String get pathToAudio => "audio/tsom/";
   String get pathToSpinner => "images/spinner.gif";
   List<Album> songList;
   int currentSongId = 0;
@@ -32,7 +31,7 @@ class AudioPlayer implements OnInit {
   int position = 0;
   String marginLeft = "Opx";
   var audio;
-  AudioElement myPlayer;
+//  AudioElement myPlayer;
 //  DivElement myTimeline;
   String currentSongPath = "";
   String playPause = "glyphicon glyphicon-play";
@@ -76,7 +75,7 @@ class AudioPlayer implements OnInit {
   void songsLoaded(List<Album> data) {
     songList = data;
     for (var i = 0; i < songList.length; i++) {
-      playerList.add("player$i");
+      playerList.add("#player$i");
     }
     currentSong = songList[0];
 //    currentSongPath = "$pathToAudio${currentSong.url}";
@@ -131,7 +130,8 @@ class AudioPlayer implements OnInit {
     currentSong.selected = false;
     currentSong = songList[currentSongId];
     currentSong.selected = true;
-    audioElement = querySelector('#player$currentSongId');
+
+
     Timer.run(loadSong);
   }
 
@@ -152,12 +152,16 @@ class AudioPlayer implements OnInit {
   }
 
   void loadSong() {
+    print(playerList[currentSongId]);
+    audioElement = querySelector(playerList[currentSongId]);
+    print('#player$currentSongId');
+    print('element source ${audioElement.src}');
+
     for(var i = 0; i < playerList.length; i++) {
-      AudioElement el = querySelector('#player$p');
+      AudioElement el = querySelector('#player$i');
       el.pause();
       el.currentTime = 0;
     }
-//    audioElement.load();
     //hideSpinner = false;
     if (playing) {
       playPause = "glyphicon glyphicon-pause";
@@ -169,6 +173,7 @@ class AudioPlayer implements OnInit {
 
   void setDuration() {
     songDuration = audioElement.duration;
+    print('duration ${audioElement.duration}');
 
     //comment out for production
     if (songDuration.isInfinite) {

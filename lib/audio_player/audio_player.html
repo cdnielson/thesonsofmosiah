@@ -86,10 +86,10 @@
         <div class="time" draggable="false">{{ minutes }}:{{ seconds | formatseconds }}</div>
     </div>
 </div>
+
 <div *ngFor="#song of songList; #i = index">
     <audio id="player{{i}}" (ended)="changeSong('next')" (timeupdate)="timeUpdate()" preload>
-        <source [src]="currentSongPath" type="audio/ogg">
-        <source [src]="currentSongPath" type="audio/mpeg">
+        <source [src]="pathToAudio + song.url" type="audio/ogg">
+        <source [src]="pathToAudio + song.url" type="audio/mpeg">
     </audio>
 </div>
-<div #player></div>
