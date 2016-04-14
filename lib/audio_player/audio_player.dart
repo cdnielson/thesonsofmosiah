@@ -248,4 +248,9 @@ class AudioPlayer implements OnInit {
     hideSpinner = true;
   }
 
+  handleVolume(String _int) {
+    double volume = int.parse(_int) / 100;
+    player.nativeElement.volume = volume;
+  }
+
 }

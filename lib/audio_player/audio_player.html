@@ -46,6 +46,11 @@
         width: 100%;
         z-index: 200000;
     }
+    .volume {
+        transform: rotate(270deg);
+        -moz-transform: rotate(270deg);
+        width: 175px;
+    }
 </style>
 
 <h1 class="text-center">{{ title }}</h1>
@@ -67,16 +72,15 @@
         <h3>LOADING...</h3>
     </div>
     <div class="text-center" [hidden]="!hideSpinner"><h3>{{ currentSongId + 1 }} - {{ currentSong.name }}</h3></div>
-    <div class="text-center">
+    <div class="horizonal-layout" draggable="false">
+
         <button (click)="changeSong('prev')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
         <button (click)="play()" class="btn btn-default btn-lg"><span aria-hidden="true" [ngClass]="playPause"></span></button>
         <button (click)="stop()" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
         <button (click)="changeSong('next')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
 
-    </div>
 
 
-    <div class="horizonal-layout" draggable="false">
         <div class="time" draggable="false">{{ currentMinute }}:{{ currentSecond | formatseconds }}</div>
         <div>
             <div id="timeline" #timeline (mousedown)="handleMouseDown($event)" (click)="handleMouseMoveOrClick($event)">
@@ -84,8 +88,11 @@
             </div>
         </div>
         <div class="time" draggable="false">{{ minutes }}:{{ seconds | formatseconds }}</div>
+        <input #volume type="range" min="0" max="100" step="1"  value="100" (change)="handleVolume(volume.value)" class="volume" orient="vertical"/>
     </div>
+
 </div>
+
 <audio #player (ended)="changeSong('next')" (timeupdate)="timeUpdate()" (canplaythrough)="setDuration()" preload (canplay)="stopSpinner()">
     <source [src]="currentSongPath" type="audio/ogg">
     <source [src]="currentSongPath" type="audio/mpeg">
