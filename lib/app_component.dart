@@ -24,7 +24,7 @@ import 'package:thesonsofmosiah/model/sections.dart';
     providers: const [SiteService])
 class AppComponent {
 
-  String siteToLoad = "fp";
+  String siteToLoad = "ld";
   static const PATH_TO_IMAGES = "images/";
   Site siteData;
   Sections sectionData;

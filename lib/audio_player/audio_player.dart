@@ -21,7 +21,7 @@ class AudioPlayer implements OnInit {
   String title = "Audio Player";
 
   //String get pathToSongs => "data/albums/";
-  String get pathToAudio => "audio/";
+  String get pathToAudio => "audio/ld/";
   String get pathToSpinner => "images/spinner.gif";
   List<Album> songList;
   int currentSongId = 0;
@@ -54,6 +54,12 @@ class AudioPlayer implements OnInit {
   String playHeadPosition = "0px";
   SongsServices songsService = new SongsServices();
   bool hideSpinner = true;
+  bool hideVolume = true;
+  String volumeBottom = "0";
+  String volumeLeft = "0";
+  double volume = 1.0;
+  bool muted = false;
+  String volumeButton = "glyphicon glyphicon-volume-up";
 
   ngOnInit() {
     songsService.getSongs(siteData.album).then(songsLoaded).then((_){
@@ -249,8 +255,32 @@ class AudioPlayer implements OnInit {
   }
 
   handleVolume(String _int) {
-    double volume = int.parse(_int) / 100;
+    volume = int.parse(_int) / 100;
     player.nativeElement.volume = volume;
+    if (muted) {
+      muteUnmute();
+    }
+  }
+
+  handleMouseOverVolume() {
+    var offsets = querySelector('#volume-button').getBoundingClientRect();
+    var top = offsets.top.round() -80;
+    var left = offsets.left.round() - 24;
+    volumeBottom = '${top.toString()}px';
+    volumeLeft = '${left.toString()}px';
+    hideVolume = false;
+  }
+
+  muteUnmute() {
+    if(muted){
+      player.nativeElement.volume = volume;
+      muted = false;
+      volumeButton = "glyphicon glyphicon-volume-up";
+    } else {
+      player.nativeElement.volume = 0;
+      muted = true;
+      volumeButton = "glyphicon glyphicon-volume-off";
+    }
   }
 
 }

@@ -49,7 +49,10 @@
     .volume {
         transform: rotate(270deg);
         -moz-transform: rotate(270deg);
-        width: 175px;
+        position: fixed;
+        z-index: 1000;
+        width: 100px;
+        height: 50px;
     }
 
     input[type=range] {
@@ -60,10 +63,10 @@
         border: 1px solid white;
 
         /*required for proper track sizing in FF*/
-        width: 300px;
+        /*width: 175px;*/
     }
     input[type=range]::-webkit-slider-runnable-track {
-        width: 300px;
+        width: 100px;
         height: 5px;
         background: #ddd;
         border: none;
@@ -86,7 +89,7 @@
     }
 
     input[type=range]::-moz-range-track {
-        width: 300px;
+        width: 100px;
         height: 5px;
         background: #ddd;
         border: none;
@@ -107,7 +110,7 @@
     }
 
     input[type=range]::-ms-track {
-        width: 300px;
+        width: 100px;
         height: 5px;
 
         /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
@@ -179,12 +182,18 @@
             </div>
         </div>
         <div class="time" draggable="false">{{ minutes }}:{{ seconds | formatseconds }}</div>
-        <input #volume type="range" min="0" max="100" step="1"  value="100" (change)="handleVolume(volume.value)" class="volume" orient="vertical"/>
+        <div (mouseenter)="handleMouseOverVolume()" [hidden]="!hideVolume">
+            <button id="volume-button" class="btn btn-default btn-lg"><span [ngClass]="volumeButton"></span></button>
+        </div>
+        <span (mouseleave)="hideVolume = true" [hidden]="hideVolume">
+            <button id="volume-button-2" class="btn btn-default btn-lg" (click)="muteUnmute()"><span [ngClass]="volumeButton"></span></button>
+            <input #volume type="range" min="0" max="100" step="1"  value="100" (change)="handleVolume(volume.value)" class="volume" orient="vertical" [ngStyle]="{'top':volumeBottom, 'left':volumeLeft}"/>
+        </span>
     </div>
 
 </div>
 
-<audio #player (ended)="changeSong('next')" (timeupdate)="timeUpdate()" (canplaythrough)="setDuration()" preload (canplay)="stopSpinner()">
+<audio #player (ended)="changeSong('next')" (timeupdate)="timeUpdate()" (canplaythrough)="setDuration()" preload (canplay)="stopSpinner()" mouse>
     <source [src]="currentSongPath" type="audio/ogg">
     <source [src]="currentSongPath" type="audio/mpeg">
 </audio>
