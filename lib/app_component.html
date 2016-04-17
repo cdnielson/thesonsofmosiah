@@ -1,18 +1,21 @@
 <div *ngIf="dataLoaded" id="mainDiv">
     <div class="container" id="home" [ngStyle]="{'background-image': background}">
         <menu-bar class="topMenuBar"
+                  [menuColor]="siteData?.menuColor"
                   [menuClass]="'horizontal layout end-justified'"
                   (clicked)="handleScroll($event)"
                   [showHome]="false"
                   [fpImageIsBlack]="true">
         </menu-bar>
         <menu-bar class="topMenuBar2"
+                  [menuColor]="siteData?.menuColor"
                   [menuClass]="'vertical layout end'"
                   (clicked)="handleScroll($event)"
                   [showHome]="false"
                   [fpImageIsBlack]="true">
         </menu-bar>
-        <img [hidden]="hideLogo" [src]="logo" id="logo"/>
+        <!--center block for Rilla only-->
+        <img [hidden]="hideLogo" [src]="logo" id="logo" class="center-block"/>
     </div>
     <about-page *ngIf="sectionData.about"></about-page>
     <projects-page *ngIf="sectionData.projects" (newPage)="swapSite($event)"></projects-page>
@@ -20,8 +23,9 @@
     <listen-page *ngIf="sectionData.listen"></listen-page>
     <people-page *ngIf="sectionData.people"></people-page>
     <contact-page *ngIf="sectionData.contact"></contact-page>
+    <images-page *ngIf="sectionData.images"></images-page>
 
-    <div id="blank_footer" class="spacing" [ngStyle]="{'background-color':siteData.backgroundColor2}"></div>
+    <!--<div id="blank_footer" class="spacing" [ngStyle]="{'background-color':siteData.backgroundColor2}"></div>-->
     <div class="bottom-menu" (click)="showHideMenu()">
         <div [hidden]="hideMenuButton" class="center-block">
             <div class="hamburger"></div>
@@ -29,6 +33,7 @@
             <div class="hamburger"></div>
         </div>
         <menu-bar [menuClass]="'vertical layout center'"
+                  [menuColor]="'white'"
                   (clicked)="handleScroll($event)"
                   [showHome]="true"
                   style="width: 100%;"

@@ -14,17 +14,18 @@ import 'package:thesonsofmosiah/page_components/contact_page.dart';
 import 'package:thesonsofmosiah/page_components/listen_page.dart';
 import 'package:thesonsofmosiah/page_components/projects_page.dart';
 import 'package:thesonsofmosiah/page_components/books_page.dart';
+import 'package:thesonsofmosiah/page_components/images_page.dart';
 import 'package:thesonsofmosiah/model/site.dart';
 import 'package:thesonsofmosiah/model/sections.dart';
 
 @Component(
     selector: 'my-app',
     templateUrl: 'app_component.html',
-    directives: const [MenuBar, AboutPage, PeoplePage, ProjectsPage, ContactPage, ListenPage, BooksPage],
+    directives: const [MenuBar, AboutPage, PeoplePage, ProjectsPage, ContactPage, ListenPage, BooksPage, ImagesPage],
     providers: const [SiteService])
 class AppComponent {
 
-  String siteToLoad = "ld";
+  String siteToLoad = "rogg";
   static const PATH_TO_IMAGES = "images/";
   Site siteData;
   Sections sectionData;

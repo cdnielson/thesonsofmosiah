@@ -21,7 +21,7 @@ class AudioPlayer implements OnInit {
   String title = "Audio Player";
 
   //String get pathToSongs => "data/albums/";
-  String get pathToAudio => "audio/ld/";
+  String get pathToAudio => "audio/rogg/";
   String get pathToSpinner => "images/spinner.gif";
   List<Album> songList;
   int currentSongId = 0;
@@ -264,7 +264,7 @@ class AudioPlayer implements OnInit {
 
   handleMouseOverVolume() {
     var offsets = querySelector('#volume-button').getBoundingClientRect();
-    var top = offsets.top.round() -80;
+    var top = offsets.top.round() -75;
     var left = offsets.left.round() - 24;
     volumeBottom = '${top.toString()}px';
     volumeLeft = '${left.toString()}px';

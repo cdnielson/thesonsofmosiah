@@ -1,0 +1,33 @@
+{
+  "siteTitle":"Rilla of Green Gables",
+  "backgroundUrl":"rogg/background.jpg",
+  "logo":"rogg/rilla_title.png",
+  "menuColor":"#1a5202",
+  "backgroundColor1":"#fce3bb",
+  "backgroundColor2":"#d4c3dc",
+  "aboutText":"About Text",
+  "contactInfo": {
+    "name": "Folk Prophet L.L.C.",
+    "streetAddress": "3536 South Hawk Drive",
+    "cityStateZip": "Saratoga Springs, Utah, 84045",
+    "phone": "801-885-6258",
+    "email": "cdnielson@folkprophet.com"
+  },
+  "people": [
+    {"name":"Tyler Hinton", "role":"Playwright, Producer, Director"},
+    {"name":"Charles Dail Nielson", "role":"Composer, Librettist, Lyricist, Orchestrator, Demo Singer"},
+    {"name":"Bryony Danae Nielson", "role":"Demo Singer"}
+  ],
+  "sections": {
+    "fp": true,
+    "sstc": true,
+    "about": true,
+    "projects": false,
+    "books": false,
+    "people": true,
+    "listen": true,
+    "contact": true,
+    "images": true
+  },
+  "album":"rogg_album.json"
+}

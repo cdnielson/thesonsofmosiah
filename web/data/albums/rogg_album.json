@@ -1,0 +1,10 @@
+{ "title" : "Rilla of Green Gables",
+  "artist" : "Jerome Kern & Irving Berlin",
+  "songs" :
+  [
+    {
+      "name": "They Didn't Believe Me (radio mix)",
+      "url": "they_didnt_believe_pop.mp3"
+    }
+  ]
+}

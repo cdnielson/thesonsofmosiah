@@ -53,6 +53,9 @@
         z-index: 1000;
         width: 100px;
         height: 50px;
+        padding-bottom: 6px;
+        border-radius: 5px;
+        box-shadow: -1px 1px 1px 1px grey;
     }
 
     input[type=range] {
@@ -67,7 +70,7 @@
     }
     input[type=range]::-webkit-slider-runnable-track {
         width: 100px;
-        height: 5px;
+        height: 7px;
         background: #ddd;
         border: none;
         border-radius: 3px;
@@ -76,8 +79,8 @@
         -webkit-appearance: none;
         border: none;
         height: 16px;
-        width: 16px;
-        border-radius: 50%;
+        width: 10px;
+        border-radius: 3px;
         background: goldenrod;
         margin-top: -4px;
     }
@@ -90,7 +93,7 @@
 
     input[type=range]::-moz-range-track {
         width: 100px;
-        height: 5px;
+        height: 7px;
         background: #ddd;
         border: none;
         border-radius: 3px;
@@ -98,8 +101,8 @@
     input[type=range]::-moz-range-thumb {
         border: none;
         height: 16px;
-        width: 16px;
-        border-radius: 50%;
+        width: 10px;
+        border-radius: 3px;
         background: goldenrod;
     }
 
@@ -111,7 +114,7 @@
 
     input[type=range]::-ms-track {
         width: 100px;
-        height: 5px;
+        height: 7px;
 
         /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
         background: transparent;
@@ -134,8 +137,8 @@
     input[type=range]::-ms-thumb {
         border: none;
         height: 16px;
-        width: 16px;
-        border-radius: 50%;
+        width: 10px;
+        border-radius: 3px;
         background: goldenrod;
     }
     input[type=range]:focus::-ms-fill-lower {
@@ -166,15 +169,15 @@
         <h3>LOADING...</h3>
     </div>
     <div class="text-center" [hidden]="!hideSpinner"><h3>{{ currentSongId + 1 }} - {{ currentSong.name }}</h3></div>
-    <div class="horizonal-layout" draggable="false">
 
+    <div class="layout horizontal center-justified">
         <button (click)="changeSong('prev')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>
         <button (click)="play()" class="btn btn-default btn-lg"><span aria-hidden="true" [ngClass]="playPause"></span></button>
         <button (click)="stop()" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
         <button (click)="changeSong('next')" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>
+    </div>
 
-
-
+    <div class="horizonal-layout" draggable="false">
         <div class="time" draggable="false">{{ currentMinute }}:{{ currentSecond | formatseconds }}</div>
         <div>
             <div id="timeline" #timeline (mousedown)="handleMouseDown($event)" (click)="handleMouseMoveOrClick($event)">
@@ -185,10 +188,10 @@
         <div (mouseenter)="handleMouseOverVolume()" [hidden]="!hideVolume">
             <button id="volume-button" class="btn btn-default btn-lg"><span [ngClass]="volumeButton"></span></button>
         </div>
-        <span (mouseleave)="hideVolume = true" [hidden]="hideVolume">
+        <div (mouseleave)="hideVolume = true" [hidden]="hideVolume">
             <button id="volume-button-2" class="btn btn-default btn-lg" (click)="muteUnmute()"><span [ngClass]="volumeButton"></span></button>
             <input #volume type="range" min="0" max="100" step="1"  value="100" (change)="handleVolume(volume.value)" class="volume" orient="vertical" [ngStyle]="{'top':volumeBottom, 'left':volumeLeft}"/>
-        </span>
+        </div>
     </div>
 
 </div>

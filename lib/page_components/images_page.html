@@ -1,0 +1,8 @@
+<div id="images" class="spacing" [ngStyle]="{'background-color':siteService.siteData.backgroundColor2}">
+    <h2 class="text-center">IMAGES</h2>
+    <div class="layout horizontal around-justified wrap">
+        <div *ngFor="#image of images">
+            <img [src]="image['src']" [ngStyle]="{'width':image['width'],'height':image['height']}" style="padding: 10px;"/>
+        </div>
+    </div>
+</div>

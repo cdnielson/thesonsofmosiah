@@ -1,13 +1,16 @@
-<img *ngIf="siteService?.sectionData.fp" (click)="handleClicked('fp')" [hidden]="fpImageIsBlack" class="fpLink" [src]="fpImageWhite"/>
-<img *ngIf="siteService?.sectionData.fp" (click)="handleClicked('fp')" [hidden]="!fpImageIsBlack" class="fpLink" [src]="fpImageBlack"/>
+<a href="http://www.folkprophet.com"><img *ngIf="siteService?.sectionData.fp" [hidden]="fpImageIsBlack" class="fpLink" [src]="fpImageWhite"/>
+<img *ngIf="siteService?.sectionData.fp" [hidden]="!fpImageIsBlack" class="fpLink" [src]="fpImageBlack"/></a>
+<img *ngIf="siteService?.sectionData.sstc" class="sstcLink" [src]="sstcImage"/>
 <ul id="menu"
     style="list-style: none; padding: 0; margin: 0;"
-    [ngClass]="menuClass">
+    [ngClass]="menuClass"
+    [ngStyle]="{'color':menuColor}">
     <li *ngIf="showHome" (click)="handleClicked('home')" class="h4 topMenu">HOME</li>
     <li *ngIf="siteService?.sectionData.about" (click)="handleClicked('about')" class="h4 topMenu">ABOUT</li>
     <li *ngIf="siteService?.sectionData.listen" (click)="handleClicked('listen')" class="h4 topMenu">LISTEN</li>
     <li *ngIf="siteService?.sectionData.projects" (click)="handleClicked('projects')" class="h4 topMenu">PROJECTS</li>
     <li *ngIf="siteService?.sectionData.books" (click)="handleClicked('books')" class="h4 topMenu">BOOKS</li>
-    <li *ngIf="siteService?.sectionData.people" (click)="handleClicked('people')" class="h4 topMenu">PEOPLE</li>
+    <li *ngIf="siteService?.sectionData.people" (click)="handleClicked('people')" class="h4 topMenu">ORIGINAL CAST</li>
     <li *ngIf="siteService?.sectionData.contact" (click)="handleClicked('contact')" class="h4 topMenu">CONTACT</li>
+    <li *ngIf="siteService?.sectionData.images" (click)="handleClicked('images')" class="h4 topMenu">IMAGES</li>
 </ul>
