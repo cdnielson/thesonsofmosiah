@@ -7,7 +7,7 @@
     [ngStyle]="{'color':menuColor}">
     <li *ngIf="showHome" (click)="handleClicked('home')" class="h4 topMenu">HOME</li>
     <li *ngIf="siteService?.sectionData.about" (click)="handleClicked('about')" class="h4 topMenu">ABOUT</li>
-    <li *ngIf="siteService?.sectionData.listen" (click)="handleClicked('listen')" class="h4 topMenu">LISTEN</li>
+    <li *ngIf="siteService?.sectionData.listen" (click)="handleClicked('listen')" class="h4 topMenu">AUDIO</li>
     <li *ngIf="siteService?.sectionData.projects" (click)="handleClicked('projects')" class="h4 topMenu">PROJECTS</li>
     <li *ngIf="siteService?.sectionData.books" (click)="handleClicked('books')" class="h4 topMenu">BOOKS</li>
     <li *ngIf="siteService?.sectionData.people" (click)="handleClicked('people')" class="h4 topMenu">ORIGINAL CAST</li>
