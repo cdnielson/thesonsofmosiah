@@ -21,7 +21,7 @@ class AudioPlayer implements OnInit {
   String title = "Audio Player";
 
   //String get pathToSongs => "data/albums/";
-  String get pathToAudio => "audio/rogg/";
+  String get pathToAudio => "audio/tsom/";
   String get pathToSpinner => "images/spinner.gif";
   List<Album> songList;
   int currentSongId = 0;
