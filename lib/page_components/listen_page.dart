@@ -8,6 +8,7 @@ import 'package:thesonsofmosiah/services/site_services.dart';
     directives: const [AudioPlayer])
 class ListenPage {
   SiteService siteService;
+  String get pathToImages => "images/rogg/";
 
   ListenPage(SiteService this.siteService);
 }

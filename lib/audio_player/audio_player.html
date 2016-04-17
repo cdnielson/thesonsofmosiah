@@ -152,13 +152,13 @@
 
 <h1 class="text-center">{{ title }}</h1>
 <div class="container" style="background-color: white; padding: 10px;">
-    <div [ngStyle]="{'height': playerHeight}" style="overflow: auto; border: 1px solid black;">
+    <div [ngStyle]="{'height': playerHeight}" style="overflow: auto; border: 1px solid black;" id="player-window">
         <table class="table">
             <tr>
                 <th>Song</th>
                 <th>Artist</th>
             </tr>
-            <tr *ngFor="#song of songList; #i = index" [class.highlight]="song.selected" class="pointer">
+            <tr *ngFor="#song of songList; #i = index" [class.highlight]="song.selected" class="pointer" id="song{{i}}" tabindex="0">
                 <td (click)="playSelectedSong(i)">{{ i + 1 }}. {{ song.name }}</td><td>{{artist}}</td>
             </tr>
         </table>

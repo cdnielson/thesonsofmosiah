@@ -3,7 +3,103 @@
   "songs" :
   [
     {
-      "name": "They Didn't Believe Me (radio mix)",
+      "name": "Overture",
+      "url": "01_overture.mp3"
+    },
+    {
+      "name": "The Road That Lies Before",
+      "url": "02_the_road.mp3"
+    },
+    {
+      "name": "How'd You Like to Dance With Me/I'm Going to Find a Girl",
+      "url": "03_how_you.mp3"
+    },
+    {
+      "name": "There It is Again",
+      "url": "04_there_it_is_again.mp3"
+    },
+    {
+      "name": "Till the Clouds Roll By",
+      "url": "05_clouds.mp3"
+    },
+    {
+      "name": "What I'm Longing to Say",
+      "url": "06_longing.mp3"
+    },
+    {
+      "name": "Look For the Silver Lining",
+      "url": "07_silver.mp3"
+    },
+    {
+      "name": "We're On Our Way to France",
+      "url": "08_france.mp3"
+    },
+    {
+      "name": "The Voice of Belgium",
+      "url": "09_belgium.mp3"
+    },
+    {
+      "name": "Dream On, Little Soldier Boy",
+      "url": "10_dream_on.mp3"
+    },
+    {
+      "name": "Oh, How I Hate to Get Up in the Morning",
+      "url": "11_morning.mp3"
+    },
+    {
+      "name": "Lullaby",
+      "url": "12_lullaby.mp3"
+    },
+    {
+      "name": "When I Lost You/We Have Much to be Thankful For",
+      "url": "13_lost_you.mp3"
+    },
+    {
+      "name": "Entr'acte",
+      "url": "14_entracte.mp3"
+    },
+    {
+      "name": "The Crickets Are Calling",
+      "url": "15_crickets.mp3"
+    },
+    {
+      "name": "I Never Knew",
+      "url": "16_never.mp3"
+    },
+    {
+      "name": "When the Ships Come Home",
+      "url": "17_ships.mp3"
+    },
+    {
+      "name": "The Voice of Belgium (Reprise)",
+      "url": "18_belgium2.mp3"
+    },
+    {
+      "name": "The New Moon",
+      "url": "19_moon.mp3"
+    },
+    {
+      "name": "The Sun Shines Brighter",
+      "url": "20_sun.mp3"
+    },
+    {
+      "name": "How Can I Forget?",
+      "url": "21_forget.mp3"
+    },
+    {
+      "name": "The Road That Lies Before (Reprise)",
+      "url": "22_road2.mp3"
+    },
+    {
+      "name": "Bows and Exit Music",
+      "url": "23_bows.mp3"
+    },
+    {
+      "name": "The Didn't Believe Me (bonus)",
+      "url": "24_believe.mp3"
+    },
+    {
+      "name": "They Didn't Believe Me (online only radio mix)",
       "url": "they_didnt_believe_pop.mp3"
     }
   ]

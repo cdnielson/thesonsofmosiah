@@ -60,6 +60,7 @@ class AudioPlayer implements OnInit {
   double volume = 1.0;
   bool muted = false;
   String volumeButton = "glyphicon glyphicon-volume-up";
+  static const num SCROLL_SPEED = 10;
 
   ngOnInit() {
     songsService.getSongs(siteData.album).then(songsLoaded).then((_){
@@ -138,6 +139,8 @@ class AudioPlayer implements OnInit {
 
   void setSongToPlay() {
     currentSong.selected = false;
+    var myScrollItem = querySelector("#song$currentSongId");
+    myScrollItem.focus();
     currentSong = songList[currentSongId];
     currentSong.selected = true;
     print(currentSong.url);
@@ -282,5 +285,4 @@ class AudioPlayer implements OnInit {
       volumeButton = "glyphicon glyphicon-volume-off";
     }
   }
-
 }
